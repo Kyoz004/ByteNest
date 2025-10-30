@@ -1,0 +1,188 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+  /* Light mode*/
+  --primary-color: #0EA5E9;    /* Sky blue - màu chủ đạo */
+  --secondary-color: #0284C7;  /* Darker sky blue */
+  --accent-color: #06B6D4;     /* Cyan accent */
+  --text-dark: #0F172A;        /* Chữ chính – đen xanh */
+  --text-gray: #475569;        /* Chữ phụ – xám lạnh */
+  --bg-light: #F8FAFC;         /* Nền trắng ngà*/
+  --bg-gray: #E2E8F0;          /* Card section */
+  --border-color: #CBD5E1;     /* Viền mờ*/
+  --success-color: #10B981;    /* Xanh tín hiệu */
+  --danger-color: #EF4444;     /* Đỏ minimal */
+  --hero-text-color: #FFFFFF;  /* Màu chữ trắng cho hero banner */
+}
+
+body { font-family: 'Inter', 'Be Vietnam Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; line-height: 1.6; color: var(--text-dark); background: var(--bg-light); transition: background 0.3s, color 0.3s; }
+
+body.dark-mode {
+  /* Dark mode */
+  
+  --primary-color: #6366F1;    
+  --secondary-color: #8B5CF6;   
+  --accent-color: #06B6D4;     
+  --text-dark: #F1F5F9;        
+  --text-gray: #94A3B8;        
+  --bg-light: #0F172A;         
+  --bg-gray: #1E293B;          
+  --border-color: #334155;     
+  --success-color: #10B981;    
+  --danger-color: #F87171;     
+}
+
+/* Container */
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 60px 5%;
+}
+
+/* Section Title */
+.section-title {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.section-title h2 {
+    font-size: 36px;
+    margin-bottom: 10px;
+    color: var(--text-dark);
+}
+
+.section-title p {
+    color: var(--text-gray);
+    font-size: 18px;
+}
+
+/* ===============================================
+   NÚT CUỘN LÊN ĐẦU TRANG (Scroll-to-Top)
+=============================================== */
+
+#scrollTopBtn {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    z-index: 1000; /* Đảm bảo nó nổi lên trên */
+
+    /* Kiểu dáng */
+    background-color: var(--primary-color); /* Dùng màu chủ đạo của bạn */
+    color: var(--hero-text-color); /* Dùng màu trắng cho icon */
+    border: none;
+    border-radius: 50%; /* Bo tròn */
+    width: 48px;  /* Kích thước */
+    height: 48px;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+
+    /* Căn giữa icon SVG */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    /* Ẩn nút mặc định */
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(15px);
+    transition: opacity 0.3s ease, transform 0.3s ease, background-color 0.2s ease;
+}
+
+#scrollTopBtn:hover {
+    background-color: var(--secondary-color); /* Dùng màu phụ khi hover */
+}
+
+/* Lớp .visible (sẽ được JavaScript thêm vào khi cuộn) */
+#scrollTopBtn.visible {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+/* Kiểu cho icon SVG bên trong */
+#scrollTopBtn svg {
+    width: 24px;
+    height: 24px;
+    transform: rotate(360deg); /* Xoay icon lại cho đúng chiều */
+}
+
+/* ===============================================
+   BYTE NEST — CINEMATIC LOADING SEQUENCE
+=============================================== */
+
+#loading-screen {
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(circle at center, #0b0f19, #000);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  z-index: 9999;
+  transition: opacity 0.8s ease, transform 1s ease;
+}
+
+/* --- Light sweep passing through --- */
+.light-sweep {
+  position: absolute;
+  top: 0;
+  left: -50%;
+  width: 200%;
+  height: 100%;
+  background: linear-gradient(
+    120deg,
+    transparent 30%,
+    rgba(255, 255, 255, 0.08) 50%,
+    transparent 70%
+  );
+  transform: skewX(-20deg);
+  animation: sweep 3.2s ease-in-out infinite;
+}
+
+/* --- Logo Reveal --- */
+.logo-reveal span {
+  font-size: 40px;
+  font-weight: 800;
+  color: #fff;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  opacity: 0;
+  transform: translateY(20px) scale(0.95);
+  animation: fadeUp 2s ease forwards 0.8s;
+  text-shadow: 0 0 30px rgba(99, 102, 241, 0.5);
+}
+
+/* --- Gentle ambient particles --- */
+#loading-screen::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(circle, rgba(255,255,255,0.08) 1px, transparent 1px);
+  background-size: 3px 3px;
+  opacity: 0.2;
+  animation: shimmer 6s linear infinite;
+  mix-blend-mode: overlay;
+}
+
+/* --- Keyframes --- */
+@keyframes sweep {
+  0% { transform: translateX(-100%) skewX(-20deg); opacity: 0; }
+  50% { opacity: 1; }
+  100% { transform: translateX(100%) skewX(-20deg); opacity: 0; }
+}
+
+@keyframes fadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes shimmer {
+  from { background-position: 0 0; }
+  to { background-position: 100px 100px; }
+}

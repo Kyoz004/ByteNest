@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NEWS - ByteNest</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/main.js" defer></script>
+    <script src="js/cart.js" defer></script>
+    <script src="js/theme.js" defer></script>
+    <script src="js/ui.js" defer></script>
+    <script src="js/animations.js" defer></script>
+    <link rel="icon" href="assets/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+</head>
+<body>
+    <!-- PHẦN NÀY GIỮ NGUYÊN -->
+    <div id="loading-screen">
+        <div class="light-sweep"></div>
+        <div class="logo-reveal"><span>BYTENEST</span></div>
+    </div>
+
+    <!-- PHẦN NÀY GIỮ NGUYÊN -->
+    <button id="scrollTopBtn" title="Lên đầu trang">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M11.9999 10.8284L7.05019 15.7782L5.63599 14.364L11.9999 8L18.3639 14.364L16.9497 15.7782L11.9999 10.8284Z"></path>
+        </svg>
+    </button>
+
+    <!-- ▼▼▼ PHẦN DUY NHẤT ĐƯỢC CHỈNH SỬA (ĐỂ SỬA LỖI CHỮ ĐỨNG YÊN) ▼▼▼ -->
+    <div class="promo-bar">
+        <div class="promo-content">
+            
+            <!-- 1. Thêm DIV bọc "marquee-text" -->
+            <div class="marquee-text">
+                
+                <!-- 2. Bộ tin nhắn GỐC -->
+                <span>🎉 FREESHIP cho đơn hàng trên 500K | Nhập mã: <strong>TECH2025</strong> giảm thêm 10%</span>
+                <span>🎉 SALE OFF cho đơn hàng trên 1 triệu | Nhập mã: <strong>TOTHENESTTEC</strong> giảm thêm 20%</span>
+                <span>🎉 BUILD PC ĐỘC QUYỀN | Nhập mã: <strong>BUILDNEST</strong> giảm ngay 500K</span>
+                <span>🎉 DỊCH VỤ SỬA CHỮA | Nhập mã: <strong>FIXITFAST</strong> giảm 15% tổng hóa đơn</span>
+                <span>🎉 MUA KÈM GEAR (Phím, Chuột) | Nhập mã: <strong>GEARUP</strong> giảm 12%</span>
+                
+                <!-- 3. Bộ tin nhắn LẶP LẠI (copy y hệt để chạy liền mạch) -->
+                <span>🎉 FREESHIP cho đơn hàng trên 500K | Nhập mã: <strong>TECH2025</strong> giảm thêm 10%</span>
+                <span>🎉 SALE OFF cho đơn hàng trên 1 triệu | Nhập mã: <strong>TOTHENESTTEC</strong> giảm thêm 20%</span>
+                <span>🎉 BUILD PC ĐỘC QUYỀN | Nhập mã: <strong>BUILDNEST</strong> giảm ngay 500K</span>
+                <span>🎉 DỊCH VỤ SỬA CHỮA | Nhập mã: <strong>FIXITFAST</strong> giảm 15% tổng hóa đơn</span>
+                <span>🎉 MUA KÈM GEAR (Phím, Chuột) | Nhập mã: <strong>GEARUP</strong> giảm 12%</span>
+            
+            </div> <!-- Kết thúc .marquee-text -->
+        </div> <!-- Kết thúc .promo-content -->
+        
+        <button class="close-promo-btn">
+            <svg class="icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+        </button>
+    </div>
+
+    <header>
+        <div class="header-top">
+            <a href="index.html" class="logo-link">
+                <img src="assets/logo.png" alt="ByteNest Logo" class="logo">
+            </a>
+            
+            <div class="search-bar">
+                <input type="text" placeholder="Tìm kiếm sản phẩm, dịch vụ...">
+                <button>
+                    <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M18.031 16.6168L22.3137 20.8995L20.8995 22.3137L16.6168 18.031C15.0769 19.263 13.124 20 11 20C6.032 20 2 15.968 2 11C2 6.032 6.032 2 11 2C15.968 2 20 6.032 20 11C20 13.124 19.263 15.0769 18.031 16.6168ZM16.0247 15.8748C17.2475 14.6146 18 12.8956 18 11C18 7.1325 14.8675 4 11 4C7.1325 4 4 7.1325 4 11C4 14.8675 7.1325 18 11 18C12.8956 18 14.6146 17.2475 15.8748 16.0247L16.0247 15.8748Z"></path>
+                    </svg>
+                </button>
+            </div>
+
+            <div class="desktop-nav">
+                <nav>
+                    <ul>
+                        <li class="dropdown">
+                            <a href="products.html">Sản phẩm</a>
+                            <div class="dropdown-content">
+                                <div class="dropdown-section">
+                                    <h4><span class="section-icon"><i class="bi bi-laptop"></i></span>PC & Laptop</h4>
+                                    <a href="products.html?category=laptop">Laptop Gaming</a>
+                                    <a href="products.html?category=laptop-office">Laptop Văn phòng</a>
+                                    <a href="products.html?category=laptop-graphic">Laptop Đồ họa</a>
+                                    <a href="products.html?category=pc">PC Gaming</a>
+                                </div>
+                                <div class="dropdown-section">
+                                    <h4><span class="section-icon"><i class="bi bi-keyboard"></i></span>Phụ kiện | Gear</h4>
+                                    <a href="products.html?category=keyboard">Bàn phím cơ</a>
+                                    <a href="products.html?category=mouse">Chuột</a>
+                                    <a href="products.html?category=headset">Tai nghe | Không dây</a>
+                                    <a href="products.html?category=monitor">Màn hình</a>
+                                    <a href="products.html?category=chair">Ghế Gaming</a>
+                                </div>
+                                <div class="dropdown-section">
+                                    <h4><span class="section-icon"><i class="bi bi-cpu"></i></span>Linh kiện PC</h4>
+                                    <a href="products.html?category=cpu">CPU</a>
+                                    <a href="products.html?category=vga">VGA</a>
+                                    <a href="products.html?category=ram-pc">RAM</a>
+                                    <a href="products.html?category=ssd">SSD</a>
+                                    <a href="products.html?category=motherboard">Mainboard</a>
+                                </div>
+                                <div class="dropdown-section">
+                                    <h4><span class="section-icon"><i class="bi bi-memory"></i></span>Linh kiện Laptop</h4>
+                                    <a href="products.html?category=ram-laptop">RAM</a>
+                                    <a href="products.html?category=hdd-laptop">Ổ cứng</a>
+                                    <a href="products.html?category=battery">Pin</a>
+                                    <a href="products.html?category=adapter">Sạc Adapter</a>
+                                </div>
+                                <div class="dropdown-section">
+                                    <h4><span class="section-icon"><i class="bi bi-plug"></i></span>Phụ kiện khác</h4>
+                                    <a href="products.html?category=webcam">Webcam</a>
+                                    <a href="products.html?category=hub">Hub & Dock</a>
+                                    <a href="products.html?category=cable">Cáp & Adapter</a>
+                                    <a href="products.html?category=case">Case & Bao da</a>
+                                    <a href="products.html?category=other">Khác</a>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="nav-item no-dropdown"><a href="services.html">Dịch vụ</a></li>
+                        <li class="nav-item no-dropdown"><a href="solutions.html">Giải pháp</a></li>
+                        <li class="nav-item no-dropdown"><a href="blog.html">ByteBlog</a></li>
+                        <li class="nav-item no-dropdown"><a href="contact.html">Liên hệ</a></li>
+                    </ul>
+                </nav>
+            </div>
+
+            <div class="header-actions">
+                <button class="theme-toggle-btn" onclick="toggleDarkMode()" title="Chế độ tối">
+                    <svg class="icon sun" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v2.25m6.364.386l-1.591 1.591M21 12h-2.25m-.386 6.364l-1.591-1.591M12 18.75V21m-4.773-4.227l-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z" />
+                    </svg>
+                    <svg class="icon moon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M21.752 15.002A9.718 9.718 0 0118 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 003 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 009.002-5.998z" />
+                    </svg>
+                </button>
+                <button onclick="toggleLanguage()" title="Ngôn ngữ">
+                    <svg class="icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 21l5.25-11.25L21 21m-9-3h7.5M3 5.621a48.474 48.474 0 016-.371m0 0c1.12 0 2.233.038 3.334.114M9 5.25V3m3.334 2.364C11.176 10.658 7.69 15.08 3 17.502m9.334-12.138c.896.061 1.785.147 2.666.257m-4.589 8.495a18.023 18.023 0 01-3.827-5.802" />
+                    </svg>
+                </button>
+                <a href="create-account.html" title="Tài khoản">
+                    <svg class="icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M17.982 18.725A7.488 7.488 0 0012 15.75a7.488 7.488 0 00-5.982 2.975m11.963 0a9 9 0 10-11.963 0m11.963 0A8.966 8.966 0 0112 21a8.966 8.966 0 01-5.982-2.275M15 9.75a3 3 0 11-6 0 3 3 0 016 0z" />
+                    </svg>
+                </a>
+                <button onclick="openCart()" title="Giỏ hàng">
+                    <svg class="icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c.51 0 .962-.343 1.087-.835l1.823-6.441a.75.75 0 00-.543-.922H5.821a.75.75 0 00-.722.534L3 14.25zM7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c.51 0 .962-.343 1.087-.835l1.823-6.441a.75.75 0 00-.543-.922H5.821a.75.75 0 00-.722.534L3 14.25zM7.5 14.25h11.218m-13.5 3a3 3 0 116 0 3 3 0 01-6 0z" />
+                    </svg>
+                    <span class="cart-badge" id="cartCount">0</span>
+                </button>
+                
+                <button class="mobile-menu-btn" onclick="toggleMobileMenu()" aria-expanded="false" aria-controls="mobileNav">
+                    <svg class="icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+                    </svg>
+                </button>
+            </div> 
+        </div>
+    </header>
+
+    <div class="container" id="blog">
+        <div class="section-title">
+            <h2>Tin Tức & Đánh Giá</h2>
+            <p>Cập nhật thủ thuật, tin tức và các bài đánh giá sản phẩm mới nhất</p>
+        </div>
+
+        <div class="product-grid">
+
+            <div class="product-card blog-card">
+                <img src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=400" alt="Blog Image" class="product-image">
+                <div class="product-info">
+                    <div class="product-category">ĐÁNH GIÁ</div>
+                    <h3 class="product-title">Đánh giá chi tiết MacBook Pro M4 (2025): Liệu có đáng để nâng cấp?</h3>
+                    <p class="blog-excerpt">Sau nhiều chờ đợi, dòng chip M4 mới của Apple đã ra mắt. Hãy cùng ByteNest mổ xẻ xem hiệu năng thực tế...</p>
+                    <a href="blog-detail.html" class="btn btn-secondary">Đọc thêm</a>
+                </div>
+            </div>
+
+            <div class="product-card blog-card">
+                <img src="https://images.unsplash.com/photo-1595225476474-87563907a212?w=400" alt="Blog Image" class="product-image">
+                <div class="product-info">
+                    <div class="product-category">THỦ THUẬT</div>
+                    <h3 class="product-title">Top 5 bàn phím cơ custom cho người mới bắt đầu (2025)</h3>
+                    <p class="blog-excerpt">Tổng hợp 5 bộ kit bàn phím cơ dễ chơi, giá tốt và cho cảm giác gõ ấn tượng nhất thời điểm hiện tại...</p>
+                    <a href="blog-detail.html" class="btn btn-secondary">Đọc thêm</a>
+                </div>
+            </div>
+
+            <div class="product-card blog-card">
+                <img src="https://images.unsplash.com/photo-1593640408182-31c70c8268f5?w=400" alt="Blog Image" class="product-image">
+                <div class="product-info">
+                    <div class="product-category">HƯỚNG DẪN</div>
+                    <h3 class="product-title">Hướng dẫn tự build PC gaming dưới 20 triệu chơi mượt mọi game</h3>
+                    <p class="blog-excerpt">Chỉ với 20 triệu đồng, bạn hoàn toàn có thể tự xây dựng một cỗ máy chiến game AAA. Hãy xem hướng dẫn...</p>
+                    <a href="blog-detail.html" class="btn btn-secondary">Đọc thêm</a>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-grid">
+
+            <div class="footer-column">
+                <h3>Sản phẩm</h3>
+                <ul>
+                    <li><a href="#">Laptop</a></li>
+                    <li><a href="#">Bàn phím cơ</a></li>
+                    <li><a href="#">Chuột Gaming</a></li>
+                    <li><a href="#">Linh kiện PC</a></li>
+                    <li><a href="#">Phụ kiện Apple</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column">
+                <h3>Dịch vụ</h3>
+                <ul>
+                    <li><a href="#">Sửa chữa Laptop</a></li>
+                    <li><a href="#">Nâng cấp PC</a></li>
+                    <li><a href="#">Vệ sinh bảo trì</a></li>
+                    <li><a href="#">Cài đặt phần mềm</a></li>
+                    <li><a href="#">Giải pháp doanh nghiệp</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column">
+                <h3>Hỗ trợ</h3>
+                <ul>
+                    <li><a href="#">Câu hỏi thường gặp</a></li>
+                    <li><a href="#">Chính sách bảo hành</a></li>
+                    <li><a href="#">Chính sách đổi trả</a></li>
+                    <li><a href="#">Hướng dẫn thanh toán</a></li>
+                    <li><a href="#">Liên hệ</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column">
+                <h3>Liên hệ</h3>
+                <ul>
+                    <li>📍 123 Lê Lợi, Q1, TP.HCM</li>
+                    <li>📞 1900 xxxx</li>
+                    <li>✉️ support@bytenest.vn</li>
+                    <li>🕐 8:00 - 22:00 (Hàng ngày)</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2025 ByteNest. All rights reserved. | Designed by KALD</p>
+        </div>
+    </footer>
+
+    <div class="popup-overlay" id="salePopup">
+        <div class="popup-content">
+            <button class="popup-close" onclick="closePopup()">&times;</button>
+            <h2>🎉 Chào mừng đến ByteNest!</h2>
+            <p>Nhận ngay mã giảm giá 15% cho đơn hàng đầu tiên</p>
+            <div class="promo-code">WELCOME15</div>
+            <button class="btn btn-primary" onclick="closePopup()">Bắt đầu mua sắm</button>
+        </div>
+    </div>
+
+
+    <div class="mobile-nav-container" id="mobileNav" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Navigation menu">
+        <button class="mobile-menu-close" onclick="toggleMobileMenu()" data-i18n-title="nav.close">
+            <svg class="icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+        </button>
+        <nav>
+            <ul>
+                <li><a href="index.html">Trang chủ</a></li>
+                <li class="mobile-dropdown">
+                    <a href="products.html" onclick="toggleMobileSubmenu(event)">Sản phẩm <span class="dropdown-arrow">▼</span></a>
+                    <ul class="mobile-submenu">
+                        <li><a href="products.html?category=laptop">Laptop Gaming</a></li>
+                        <li><a href="products.html?category=laptop-office">Laptop Văn phòng</a></li>
+                        <li><a href="products.html?category=laptop-graphic">Laptop Đồ họa</a></li>
+                        <li><a href="products.html?category=macbook">MacBook</a></li>
+                        <li><a href="products.html?category=pc">PC Gaming</a></li>
+                        <li><a href="products.html?category=keyboard">Bàn phím cơ</a></li>
+                        <li><a href="products.html?category=mouse">Chuột Gaming</a></li>
+                        <li><a href="products.html?category=headset">Tai nghe Gaming</a></li>
+                        <li><a href="products.html?category=cpu">CPU</a></li>
+                        <li><a href="products.html?category=vga">VGA</a></li>
+                        <li><a href="products.html?category=ram">RAM</a></li>
+                        <li><a href="products.html?category=ssd">SSD</a></li>
+                        <li><a href="products.html?category=iphone">iPhone</a></li>
+                        <li><a href="products.html?category=ipad">iPad</a></li>
+                        <li><a href="products.html?category=airpods">AirPods</a></li>
+                    </ul>
+                </li>
+                <li><a href="services.html">Dịch vụ</a></li>
+                <li><a href="solutions.html">Giải pháp</a></li>
+                <li><a href="blog.html">ByteBlog</a></li>
+                <li><a href="contact.html">Liên hệ</a></li>
+            </ul>
+        </nav>
+    </div>
+</body>
+</html>

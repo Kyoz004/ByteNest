@@ -1,0 +1,277 @@
+/* ============================================
+   ByteNest Account Page - Tech Blue Theme 2025
+============================================ */
+
+/* --- Bảng màu Tech Blue --- */
+:root {
+  --primary-color: #2563EB;      /* Xanh công nghệ mạnh */
+  --accent-color: #0EA5E9;       /* Cyan ánh sáng */
+  --bg-light: #F1F5F9;           /* Nền sáng */
+  --bg-dark: #0A192F;            /* Nền tối - dùng cho phần branding */
+  --bg-gray: #1E293B;            /* Xám đậm */
+  --text-dark: #1E293B;          /* Chữ chính */
+  --text-light: #94A3B8;         /* Chữ phụ */
+  --border-color: #CBD5E1;       /* Viền mờ */
+  --hover-color: #1D4ED8;        /* Màu hover đậm */
+  --success-color: #22C55E;      /* Xanh tín hiệu */
+  --danger-color: #EF4444;       /* Đỏ cảnh báo */
+}
+
+/* --- Thiết kế chung --- */
+body.account-page {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  background: var(--bg-light);
+  color: var(--text-dark);
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+}
+
+.account-page *, .account-page *:before, .account-page *:after {
+  box-sizing: inherit;
+}
+
+.account-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 20px;
+}
+
+/* --- Card chính --- */
+.account-card {
+  display: flex;
+  width: 100%;
+  max-width: 1000px;
+  background: #FFFFFF;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+  overflow: hidden;
+}
+
+/* --- Cột trái (Branding) --- */
+.account-branding {
+  flex-basis: 40%;
+  background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+  background-size: 200% 200%;
+  animation: gradientShift 8s ease infinite, fadeInBranding 1.5s ease forwards;
+  color: #fff;
+  padding: 50px 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+/* --- Hiệu ứng ánh sáng lan --- */
+.account-branding::after {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.15), transparent 70%);
+  animation: lightPulse 6s ease-in-out infinite;
+  z-index: 0;
+}
+
+/* --- Particle Layer --- */
+.account-branding .particles {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  z-index: 0;
+}
+
+.particle {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.35);
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.6);
+  animation: floatParticle linear infinite;
+}
+
+/* Tạo ngẫu nhiên bằng nth-child */
+.particle:nth-child(1) { top: 20%; left: 10%; animation-duration: 8s; animation-delay: 0s; }
+.particle:nth-child(2) { top: 60%; left: 30%; animation-duration: 10s; animation-delay: 2s; }
+.particle:nth-child(3) { top: 80%; left: 70%; animation-duration: 9s; animation-delay: 1s; }
+.particle:nth-child(4) { top: 40%; left: 90%; animation-duration: 7s; animation-delay: 3s; }
+.particle:nth-child(5) { top: 10%; left: 50%; animation-duration: 11s; animation-delay: 1.5s; }
+.particle:nth-child(6) { top: 85%; left: 25%; animation-duration: 12s; animation-delay: 0.5s; }
+
+/* --- Logo và text nổi bật hơn --- */
+.account-branding .logo,
+.account-branding h1,
+.account-branding p {
+  position: relative;
+  z-index: 1;
+}
+
+.account-branding h1 {
+  font-size: 32px;
+  font-weight: 700;
+  margin: 10px 0;
+  letter-spacing: 0.5px;
+  text-shadow: 0 0 15px rgba(255,255,255,0.35);
+}
+
+.account-branding p {
+  font-size: 15px;
+  color: rgba(255,255,255,0.85);
+}
+
+/* --- Animation Keyframes --- */
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes lightPulse {
+  0%, 100% { opacity: 0.4; transform: scale(1); }
+  50% { opacity: 0.7; transform: scale(1.05); }
+}
+
+@keyframes fadeInBranding {
+  0% { opacity: 0; transform: translateY(30px) scale(0.95); }
+  100% { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@keyframes floatParticle {
+  0% { transform: translateY(0) scale(1); opacity: 0.8; }
+  50% { transform: translateY(-40px) scale(1.2); opacity: 1; }
+  100% { transform: translateY(0) scale(1); opacity: 0.8; }
+}
+
+/* --- Form --- */
+.account-form {
+  flex-basis: 60%;
+  padding: 50px 40px;
+  background: #FFFFFF;
+}
+
+.account-form h2 {
+  margin-bottom: 30px;
+  color: var(--text-dark);
+  font-size: 26px;
+  font-weight: 700;
+}
+
+/* --- Chuyển ngôn ngữ --- */
+.language-switcher {
+  text-align: right;
+  margin-bottom: 10px;
+}
+
+.language-switcher button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-light);
+  padding: 5px;
+  transition: color 0.3s ease;
+}
+
+.language-switcher button:hover {
+  color: var(--primary-color);
+}
+
+/* --- Form input --- */
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 600;
+  color: var(--text-light);
+  font-size: 14px;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 14px 18px;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  background: #fff;
+  color: var(--text-dark);
+  font-size: 16px;
+  transition: all 0.3s ease;
+}
+
+.form-group input:focus {
+  outline: none;
+  border-color: var(--accent-color);
+  box-shadow: 0 0 0 3px rgba(37,99,235,0.15);
+}
+
+/* --- Nút chính --- */
+.btn.btn-primary {
+  display: block;
+  width: 100%;
+  padding: 16px 20px;
+  margin-top: 10px;
+  border: none;
+  border-radius: 8px;
+  background: var(--primary-color);
+  color: #fff;
+  font-size: 16px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(37,99,235,0.25);
+}
+
+.btn.btn-primary:hover {
+  background: var(--hover-color);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(37,99,235,0.35);
+}
+
+/* --- Footer --- */
+.form-footer {
+  text-align: center;
+  margin-top: 25px;
+  color: var(--text-light);
+}
+
+.form-footer a {
+  color: var(--primary-color);
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.3s ease;
+}
+
+.form-footer a:hover {
+  text-decoration: underline;
+}
+
+/* --- Responsive --- */
+@media (max-width: 800px) {
+  .account-card {
+    flex-direction: column;
+    margin: 20px 0;
+  }
+
+  .account-branding, .account-form {
+    flex-basis: 100%;
+    padding: 40px 30px;
+  }
+
+  .account-branding {
+    border-radius: 20px 20px 0 0;
+  }
+}

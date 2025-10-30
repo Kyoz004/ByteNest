@@ -1,0 +1,96 @@
+/* ===============================================
+   PROMO BAR (Gọn gàng & Tinh tế)
+=============================================== */
+
+.promo-bar {
+    background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+    color: #fff;
+    text-align: center;
+    font-size: 12px;
+    font-weight: 500;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    overflow: hidden;
+    letter-spacing: 0.1px;
+    transition: all 0.35s ease;
+    display: flex;
+    align-items: center;
+    
+    /* SỬA 1: "Gọn" hơn. Giảm padding chiều dọc */
+    padding: 3px 15px; 
+}
+
+.promo-bar:hover {
+    filter: brightness(1.08);
+}
+
+.promo-bar.hidden {
+    height: 0;
+    opacity: 0;
+    padding-top: 0;    
+    padding-bottom: 0; 
+    overflow: hidden;
+    border: none;
+}
+
+.promo-content {
+    flex-grow: 1;       
+    overflow: hidden;   
+    white-space: nowrap;  
+}
+
+.promo-content .marquee-text {
+    display: inline-block; 
+    white-space: nowrap;
+    animation: marquee 25s linear infinite; 
+}
+
+.promo-content span {
+    display: inline-block;
+    padding-right: 50px; 
+}
+
+@keyframes marquee {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
+
+.close-promo-btn {
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+    transition: transform 0.3s;
+    flex-shrink: 0;     
+    padding: 0 5px 0 15px; 
+    display: flex; 
+    align-items: center;
+    justify-content: center;
+    
+    /* SỬA 2: "Tinh tế" hơn. Giảm kích thước nút */
+    font-size: 18px;
+}
+
+.close-promo-btn:hover {
+    transform: scale(1.2);
+}
+
+.close-promo-btn .icon {
+    /* SỬA 3: Giảm kích thước icon */
+    width: 18px;
+    height: 18px;
+}
+
+
+/* PHẦN "FIX LỖI GAP" ĐÃ ĐƯỢC XÓA
+   
+   Lý do: File CSS header của bạn (ở file khác) 
+   đã chứa các thuộc tính cần thiết:
+   - position: sticky
+   - z-index: 999
+   - transition: all 0.35s ease 
+   
+   Chúng đã đủ để logic JavaScript (trong js/ui.js) hoạt động.
+*/
+

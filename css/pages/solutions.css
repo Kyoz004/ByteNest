@@ -1,0 +1,269 @@
+/* ===============================================
+   SOLUTIONS PAGE (GIẢI PHÁP) - REDESIGN 2025
+   Thiết kế dạng "Floating Glass" (Kính mờ)
+=============================================== 
+*/
+
+/* 1. Tiêu đề Section (Giữ nguyên) */
+#solutions .section-title {
+    text-align: center;
+    margin-bottom: 60px;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+#solutions .section-title h2 {
+    font-size: 36px;
+    font-weight: 800;
+    color: var(--text-dark);
+    margin-bottom: 10px;
+    position: relative;
+    display: inline-block;
+    padding-bottom: 10px;
+}
+#solutions .section-title h2::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 4px;
+    background: var(--primary-color);
+    border-radius: 2px;
+}
+#solutions .section-title p {
+    font-size: 18px;
+    color: var(--text-gray);
+    line-height: 1.6;
+}
+
+/* 2. Lưới Giải pháp (Giữ nguyên 1 cột) */
+.banners-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 40px;
+    margin-bottom: 60px;
+}
+
+/* 3. Thẻ Banner (Showroom Section) (Giữ nguyên) */
+.banner-card {
+    background: #0D1117;
+    border-radius: 24px;
+    padding: 60px 50px; /* Padding này giờ sẽ cho text */
+    border: 1px solid var(--border-color);
+    position: relative;
+    overflow: hidden;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 450px;
+    transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+/* 4. Ảnh nền (Giữ nguyên) */
+.banner-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    opacity: 0.6; /* Tăng độ sáng ảnh nền 1 chút */
+    z-index: 0;
+    transition: all 0.7s ease;
+    transform: scale(1.05);
+}
+
+/* 5. Lớp phủ (THAY ĐỔI: Chuyển thành "Tấm Kính Mờ")
+   Đây là nâng cấp chính.
+*/
+.banner-card::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 60%; /* Tấm kính chiếm 60% chiều rộng */
+    height: 100%;
+    z-index: 1;
+
+    /* Hiệu ứng Glassmorphism */
+    background: rgba(13, 17, 23, 0.4); /* Nền mờ 40% */
+    /* Đây là chìa khóa: làm mờ ảnh nền phía sau */
+    backdrop-filter: blur(16px) saturate(120%);
+    -webkit-backdrop-filter: blur(16px) saturate(120%);
+    
+    /* Viền "kính" tinh tế */
+    border-right: 1px solid rgba(255, 255, 255, 0.1);
+    
+    /* Xóa gradient cũ */
+    background-image: none; 
+    
+    transition: all 0.4s ease;
+}
+
+/* 6. Chỉ định ảnh nền (Giữ nguyên) */
+.banner-card:nth-child(1)::before {
+    background-image: url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=2071&auto-format&fit=crop');
+    background-position: center 30%;
+}
+.banner-card:nth-child(2)::before {
+    background-image: url('https://images.unsplash.com/photo-1626785774573-4b799315345d?q=80&w=2071&auto-format&fit=crop');
+}
+.banner-card:nth-child(3)::before {
+    background-image: url('/assets/banner_card_img/bci3.jpg');
+}
+
+/* 7. Nội dung bên trong Card (Showroom Content)
+   THAY ĐỔI: Text sẽ nằm trong 50% card, trên tấm kính
+*/
+.banner-card h3,
+.banner-card p,
+.banner-card .btn {
+    position: relative;
+    z-index: 2; /* Nằm trên tấm kính */
+    max-width: 50%; /* Giữ nguyên 50% để text lọt vào tấm kính 60% */
+}
+
+.banner-card h3 {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    font-size: 32px;
+    font-weight: 800;
+    margin-bottom: 20px;
+    color: #FFFFFF;
+}
+.banner-card h3 i {
+    font-size: 30px;
+    color: var(--primary-color);
+    transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+.banner-card p {
+    color: #E0E0E0;
+    margin-bottom: 30px;
+    font-size: 17px;
+    line-height: 1.7;
+    flex-grow: 0;
+}
+
+/* 8. Layout Xen kẽ (THAY ĐỔI: Cập nhật tấm kính cho card chẵn) */
+.banner-card:nth-child(even) {
+    align-items: flex-end;
+    text-align: right;
+}
+
+/* Đảo vị trí tấm kính sang phải */
+.banner-card:nth-child(even)::after {
+    left: auto; /* Hủy left: 0 */
+    right: 0; /* Đặt sang phải */
+    width: 60%;
+    
+    /* Đổi viền sang trái */
+    border-right: none;
+    border-left: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.banner-card:nth-child(even) h3 {
+    flex-direction: row-reverse;
+}
+.banner-card:nth-child(even) h3,
+.banner-card:nth-child(even) p,
+.banner-card:nth-child(even) .btn {
+    align-self: flex-end;
+}
+
+/* 9. Nút (Button) (Giữ nguyên) */
+.banner-card .btn.btn-secondary {
+    background: var(--primary-color);
+    color: white;
+    font-weight: 700;
+    padding: 14px 32px;
+    border: none;
+    border-radius: 12px;
+    align-self: flex-start;
+    transition: all 0.3s ease;
+    box-shadow: 0 6px 12px rgba(var(--primary-rgb), 0.3);
+    text-decoration: none;
+}
+.banner-card:nth-child(even) .btn.btn-secondary {
+    align-self: flex-end;
+}
+
+/* 10. Hiệu ứng Hover (THAY ĐỔI: Cập nhật hiệu ứng cho tấm kính) */
+.banner-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+    border-color: rgba(var(--primary-rgb), 0.5);
+}
+.banner-card:hover::before {
+    opacity: 0.7; /* Ảnh nền rõ hơn */
+    transform: scale(1);
+}
+
+/* Nâng cấp: Tấm kính cũng phản hồi khi hover */
+.banner-card:hover::after {
+    background: rgba(13, 17, 23, 0.5); /* Nền đậm hơn 1 chút */
+    /* Viền kính sáng lên màu chính */
+    border-color: rgba(var(--primary-rgb), 0.5); 
+}
+
+.banner-card:hover h3 i {
+    transform: scale(1.15) rotate(-10deg);
+}
+.banner-card .btn.btn-secondary:hover {
+    background: #FFFFFF;
+    color: var(--primary-color);
+    box-shadow: 0 8px 16px rgba(255, 255, 255, 0.2);
+    transform: translateY(-3px) scale(1.03);
+}
+
+/* 11. Responsive cho Mobile (THAY ĐỔI: Tấm kính trên mobile) */
+@media (max-width: 768px) {
+    #solutions .section-title h2 { font-size: 28px; }
+    #solutions .section-title p { font-size: 16px; }
+
+    .banner-card {
+        padding: 40px 25px;
+        min-height: 350px;
+    }
+    .banner-card,
+    .banner-card:nth-child(even) {
+        align-items: flex-start;
+        text-align: left;
+    }
+    
+    /* Text chiếm 100% (cần padding của card) */
+    .banner-card h3,
+    .banner-card p,
+    .banner-card .btn,
+    .banner-card:nth-child(even) h3,
+    .banner-card:nth-child(even) p,
+    .banner-card:nth-child(even) .btn {
+        max-width: 100%;
+        align-self: flex-start;
+    }
+    
+    .banner-card h3,
+    .banner-card:nth-child(even) h3 {
+        font-size: 24px;
+        flex-direction: row;
+    }
+    .banner-card p { font-size: 15px; }
+
+    /* Cập nhật tấm kính trên mobile */
+    .banner-card::after,
+    .banner-card:nth-child(even)::after {
+        width: 100%; /* Tấm kính phủ 100% */
+        left: 0;
+        right: auto;
+        /* Nền đậm hơn trên mobile để dễ đọc */
+        background: rgba(13, 17, 23, 0.65); 
+        backdrop-filter: blur(12px) saturate(100%);
+        -webkit-backdrop-filter: blur(12px) saturate(100%);
+        border: none; /* Bỏ viền trên mobile */
+    }
+}

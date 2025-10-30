@@ -1,0 +1,178 @@
+/* ===============================================
+  SERVICES PAGE (DỊCH VỤ)
+=============================================== 
+*/
+
+/* 1. CSS cho tiêu đề (Để đồng bộ với các trang khác) */
+#services .section-title {
+    text-align: center;
+    margin-bottom: 50px;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#services .section-title h2 {
+    font-size: 36px;
+    font-weight: 800;
+    color: var(--text-dark);
+    margin-bottom: 10px;
+    position: relative;
+    display: inline-block;
+    padding-bottom: 10px;
+}
+
+/* Thêm một đường gạch chân cách điệu */
+#services .section-title h2::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 4px;
+    background: var(--primary-color);
+    border-radius: 2px;
+}
+
+#services .section-title p {
+    font-size: 18px;
+    color: var(--text-gray);
+    line-height: 1.6;
+}
+
+/* 2. CSS cho Lưới dịch vụ (CSS của bạn + Tinh chỉnh) */
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+}
+
+/* Fade-in + slide khi cuộn vào viewport */
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(40px);
+    filter: blur(6px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+
+/* Hiệu ứng glow nhẹ trên nền gradient */
+@keyframes pulseGlow {
+  0%, 100% {
+    box-shadow: 0 0 0 rgba(255,255,255,0);
+  }
+  50% {
+    box-shadow: 0 0 25px rgba(255,255,255,0.25);
+  }
+}
+
+/* Shine vệt sáng thực tế hơn (loop chậm nhẹ) */
+@keyframes shineSweep {
+  0% {
+    left: -150%;
+  }
+  100% {
+    left: 150%;
+  }
+}
+
+.service-card {
+    background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+    color: white;
+    padding: 35px 30px;
+    border-radius: 20px;
+    text-align: center;
+    transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+    position: relative;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* * HIỆU ỨNG "SHINE" 2025
+ * Đây là một vệt sáng tuyến tính, xoay 25 độ
+ */
+.service-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -150%; /* Bắt đầu từ bên ngoài bên trái */
+    width: 250%;
+    height: 200%;
+    
+    /* Vệt sáng được tạo bằng linear-gradient */
+    background: linear-gradient(
+        100deg, 
+        transparent 40%, 
+        rgba(255, 255, 255, 0.25) 50%, 
+        transparent 60%
+    );
+    
+    transform: rotate(-25deg); /* Xoay vệt sáng 25 độ */
+    transition: transform 0.8s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+/* Khi hover, di chuyển vệt sáng sang phải để tạo hiệu ứng lướt qua */
+.service-card:hover::before {
+    transform: translate(80%, 0) rotate(0deg);
+}
+
+/* Hiệu ứng "nâng" card lên khi hover */
+.service-card:hover {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: 0 20px 50px rgba(0,0,0,0.25);
+}
+
+.service-icon {
+    font-size: 50px;
+    margin-bottom: 20px;
+    color: white;
+    transition: transform 0.4s ease-in-out;
+}
+
+/* Thêm hiệu ứng cho icon khi hover card */
+.service-card:hover .service-icon {
+    transform: scale(1.15) rotate(-8deg);
+}
+
+.service-card h3 {
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 15px;
+    color: white; /* Đảm bảo h3 màu trắng */
+}
+
+.service-card p {
+    margin-bottom: 25px;
+    opacity: 0.9;
+    font-size: 15px;
+    line-height: 1.6;
+}
+
+/* 3. CSS cho nút bên trong card */
+.service-card .btn {
+    background: white;
+    color: var(--primary-color);
+    font-weight: 700; /* Nút đậm hơn */
+    padding: 12px 28px;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+/* Hover: nâng và glow */
+.service-card:hover {
+  transform: translateY(-10px) scale(1.03);
+  animation: pulseGlow 1.8s ease-in-out infinite;
+}
+
+/* Icon bounce khi hover */
+.service-card:hover .service-icon {
+  transform: scale(1.2) rotate(-5deg);
+  transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+}

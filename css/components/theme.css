@@ -1,0 +1,59 @@
+/* Light/Dark mode icon animations */
+@keyframes sun-to-moon {
+  0% { transform: rotate(0) scale(1); opacity: 1; }
+  50% { transform: rotate(90deg) scale(0.5); opacity: 0; }
+  100% { transform: rotate(180deg) scale(1); opacity: 1; }
+}
+
+@keyframes moon-to-sun {
+  0% { transform: rotate(180deg) scale(1); opacity: 1; }
+  50% { transform: rotate(270deg) scale(0.5); opacity: 0; }
+  100% { transform: rotate(360deg) scale(1); opacity: 1; }
+}
+
+.theme-toggle-btn .icon.sun {
+    display: none;
+}
+.theme-toggle-btn .icon.moon {
+    display: block;
+}
+body.dark-mode .theme-toggle-btn .icon.sun {
+    display: block;
+}
+body.dark-mode .theme-toggle-btn .icon.moon {
+    display: none;
+}
+
+.theme-toggle-btn.sun-to-moon .icon.sun {
+    animation: sun-to-moon 0.5s forwards;
+}
+.theme-toggle-btn.sun-to-moon .icon.moon {
+    animation: sun-to-moon 0.5s forwards;
+}
+
+.theme-toggle-btn.moon-to-sun .icon.sun {
+    animation: moon-to-sun 0.5s forwards;
+}
+.theme-toggle-btn.moon-to-sun .icon.moon {
+    animation: moon-to-sun 0.5s forwards;
+}
+
+/* Keyframe cho hiệu ứng Pulse */
+@keyframes pulse-once {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    /* Phóng to icon lên 1.3 lần */
+    transform: scale(1.3);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* Áp dụng animation khi button có class 'animating' */
+#langToggleBtn.animating .icon {
+  /* Bạn có thể đổi 0.5s thành 0.3s để nhanh hơn */
+  animation: pulse-once 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}

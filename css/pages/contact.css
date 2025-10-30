@@ -1,0 +1,176 @@
+/* CONTACT PAGE STYLES */
+
+body {
+  background: linear-gradient(135deg, var(--bg-gray), var(--bg-light));
+}
+.container#contact {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(12px);
+  border-radius: 20px;
+  padding: 40px;
+  box-shadow: 0 0px 0px rgba(0,0,0,0.2);
+}
+
+
+/* === Layout === */
+.contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    margin-top: 40px;
+}
+
+/* === Contact Info === */
+.contact-info h3 {
+    font-size: 22px;
+    color: var(--text-dark);
+    margin-bottom: 10px;
+}
+
+.contact-info p {
+    color: var(--text-gray);
+    margin-bottom: 20px;
+}
+
+.contact-info ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.contact-info li {
+    font-size: 16px;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    color: var(--text-gray);
+    transition: all 0.3s ease;
+}
+
+.contact-info li:hover {
+    color: var(--primary-color);
+    transform: translateX(5px);
+}
+
+.icon-text {
+    font-size: 24px;
+    width: 30px;
+    text-align: center;
+}
+
+/* === Map === */
+.contact-map iframe {
+    width: 100%;
+    height: 300px;
+    border-radius: 15px;
+    border: 2px solid var(--border-color);
+    margin-top: 20px;
+    transition: all 0.4s ease;
+}
+
+.contact-map iframe:hover {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 20px rgba(99, 102, 241, 0.25);
+}
+
+/* === Contact Form === */
+.contact-form h3 {
+    font-size: 22px;
+    color: var(--text-dark);
+    margin-bottom: 20px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: var(--text-dark);
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 12px 20px;
+    border: 2px solid var(--border-color);
+    border-radius: 25px;
+    font-size: 14px;
+    background: var(--bg-gray);
+    color: var(--text-dark);
+    transition: all 0.3s ease;
+}
+
+.form-group textarea {
+    border-radius: 15px;
+    min-height: 150px;
+    resize: vertical;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.15);
+    background: var(--bg-light);
+}
+
+/* === Submit Button === */
+.contact-form .btn-primary {
+    width: 100%;
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 25px;
+    padding: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.contact-form .btn-primary:hover {
+    background: var(--accent-color);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+}
+
+/* === Animation on load === */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.contact-grid > div {
+    animation: fadeInUp 0.8s ease both;
+}
+
+/* Delay the form for subtle stagger effect */
+.contact-grid .contact-form {
+    animation-delay: 0.2s;
+}
+
+/* === Responsive === */
+@media (max-width: 992px) {
+    .contact-grid {
+        gap: 30px;
+    }
+}
+
+@media (max-width: 768px) {
+    .contact-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .contact-form .btn-primary {
+        font-size: 15px;
+    }
+}
+/* === End of contact.css === */
