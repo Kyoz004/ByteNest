@@ -1102,3 +1102,79 @@ body.dark-mode .category-card:hover img {
     color: var(--text-gray);
     font-size: 14px;
 }
+
+/* Responsive Design for Testimonials */
+@media (max-width: 768px) {
+    .testimonials {
+        padding: 60px 3%;
+    }
+
+    .testimonial-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .testimonial-card {
+        padding: 28px;
+    }
+
+    .testimonial-text {
+        font-size: 15px;
+        margin-bottom: 20px;
+    }
+
+    .testimonial-author img {
+        width: 50px;
+        height: 50px;
+    }
+
+    .testimonial-author h4 {
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    .testimonials {
+        padding: 40px 5%;
+    }
+
+    .testimonial-card {
+        padding: 24px;
+        border-radius: 16px;
+    }
+
+    .testimonial-card::before {
+        font-size: 100px;
+        top: -15px;
+        left: 20px;
+    }
+
+    .testimonial-rating {
+        font-size: 18px;
+        margin-bottom: 12px;
+    }
+
+    .testimonial-text {
+        font-size: 14px;
+        line-height: 1.6;
+        margin-bottom: 18px;
+    }
+
+    .testimonial-author {
+        gap: 12px;
+    }
+
+    .testimonial-author img {
+        width: 45px;
+        height: 45px;
+        border-width: 2px;
+    }
+
+    .testimonial-author h4 {
+        font-size: 15px;
+    }
+
+    .testimonial-author span {
+        font-size: 13px;
+    }
+}

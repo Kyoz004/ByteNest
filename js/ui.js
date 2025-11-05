@@ -225,6 +225,15 @@ const I18N = {
             // Testimonials Section
             'testimonials.title': 'Khách hàng nói gì về chúng tôi',
             'testimonials.subtitle': 'Những phản hồi tích cực từ khách hàng tin tưởng ByteNest',
+            'testimonial.1.text': '"Mua laptop gaming tại ByteNest, giá tốt hơn thị trường, ship nhanh và có bảo hành chu đáo. Rất hài lòng với dịch vụ!"',
+            'testimonial.1.name': 'Nguyễn Văn A',
+            'testimonial.1.role': 'Streamer',
+            'testimonial.2.text': '"Đội ngũ tư vấn rất nhiệt tình, tìm được bộ PC build giá tốt mà hiệu năng mạnh. Cảm ơn ByteNest!"',
+            'testimonial.2.name': 'Trần Thị B',
+            'testimonial.2.role': 'Designer',
+            'testimonial.3.text': '"Keychron Q1 mua tại đây, chất lượng tuyệt vời! Đúng như quảng cáo, cảm giác gõ rất tốt."',
+            'testimonial.3.name': 'Lê Minh C',
+            'testimonial.3.role': 'Developer',
 
             // Categories Page
             'categories.title': 'Danh mục sản phẩm',
@@ -251,6 +260,18 @@ const I18N = {
             'cta.explore': 'Khám phá sản phẩm',
             'cta.book': 'Đặt lịch sửa chữa',
 
+            // Banner Slides
+            'banner.products.badge': '🔥 Hot Deals',
+            'banner.products.title': 'Sản phẩm',
+            'banner.products.subtitle': 'Mới nhất 2025',
+            'banner.products.desc': 'Khám phá ngay bộ sưu tập sản phẩm công nghệ đỉnh cao',
+            'banner.products.cta': 'Xem ngay',
+            'banner.services.badge': '⚡ Fast Service',
+            'banner.services.title': 'Dịch vụ',
+            'banner.services.subtitle': 'Chuyên nghiệp',
+            'banner.services.desc': 'Sửa chữa và bảo trì thiết bị công nghệ của bạn',
+            'banner.services.cta': 'Đặt lịch ngay',
+
             // Homepage Sections
             'section.featured.title': 'Sản phẩm nổi bật',
             'section.featured.subtitle': 'Khám phá những sản phẩm công nghệ hot nhất hiện tại',
@@ -258,6 +279,22 @@ const I18N = {
             'section.categories.subtitle': 'Đa dạng sản phẩm công nghệ chính hãng & xách tay',
             'section.testimonials.title': 'Khách hàng nói gì về chúng tôi',
             'section.testimonials.subtitle': 'Những phản hồi tích cực từ khách hàng tin tưởng ByteNest',
+
+            // Featured Products
+            'featured.badge.new': 'NEW',
+            'featured.badge.hot': 'HOT',
+            'featured.badge.sale': 'SALE',
+            'featured.badge.best': 'BEST',
+            'featured.category.laptop': 'LAPTOP',
+            'featured.category.keyboard': 'BÀN PHÍM',
+            'featured.category.mouse': 'CHUỘT',
+            'featured.category.cpu': 'CPU',
+            'featured.product1.title': 'Laptop ASUS ROG Strix G15 (2025)',
+            'featured.product2.title': 'Bàn phím Monsgeek M1 V5',
+            'featured.product3.title': 'Chuột Logitech G Pro X Superlight 2',
+            'featured.product4.title': 'AMD Ryzen 7 7800X3D',
+            'featured.addtocart': 'Thêm giỏ hàng',
+            'featured.quickview': 'Xem nhanh',
 
             // Features
             'feature.genuine': 'Chính hãng 100%',
@@ -361,14 +398,23 @@ const I18N = {
             'product.details.lowStock': 'Sắp hết hàng',
 
             // Services Page
-            'services.title': 'Dịch vụ của chúng tôi',
-            'services.subtitle': 'Giải pháp toàn diện cho thiết bị công nghệ của bạn',
-            'services.repair': 'Sửa chữa Laptop & PC',
-            'services.maintenance': 'Bảo trì định kỳ',
-            'services.upgrade': 'Nâng cấp phần cứng',
-            'services.data': 'Cứu dữ liệu',
-            'services.software': 'Cài đặt phần mềm',
-            'services.consultation': 'Tư vấn giải pháp',
+            'services.title': 'Dịch vụ chuyên nghiệp',
+            'services.subtitle': 'Đội ngũ kỹ thuật viên giàu kinh nghiệm - Cam kết chất lượng',
+            'services.repair.title': 'Sửa chữa Laptop/PC',
+            'services.repair.desc': 'Sửa chữa mọi hãng: Dell, HP, Asus, Lenovo, Macbook. Bảo hành 6 tháng.',
+            'services.upgrade.title': 'Nâng cấp phần cứng',
+            'services.upgrade.desc': 'Nâng cấp RAM, SSD, VGA. Tư vấn cấu hình phù hợp.',
+            'services.maintenance.title': 'Vệ sinh & Bảo trì',
+            'services.maintenance.desc': 'Vệ sinh tản nhiệt, thay keo tản nhiệt, làm sạch bàn phím.',
+            'services.software.title': 'Cài đặt phần mềm',
+            'services.software.desc': 'Cài Windows, Office, phần mềm chuyên dụng. Hỗ trợ kích hoạt bản quyền.',
+            'services.business.title': 'Giải pháp doanh nghiệp',
+            'services.business.desc': 'Tư vấn IT, setup văn phòng, quản lý hệ thống mạng.',
+            'services.custom.title': 'PC Build Custom',
+            'services.custom.desc': 'Thiết kế và lắp ráp PC theo yêu cầu. Tối ưu giá - hiệu năng.',
+            'services.cta.book': 'Đặt lịch ngay',
+            'services.cta.consult': 'Liên hệ tư vấn',
+            'services.cta.free': 'Tư vấn miễn phí',
 
             // Solutions Page
             'solutions.title': 'Giải pháp',
@@ -463,6 +509,7 @@ const I18N = {
             'notify.error': 'Lỗi',
             'notify.warning': 'Cảnh báo',
             'notify.info': 'Thông tin',
+            'notify.added': '✓ Đã thêm',
             'notify.added_to_cart': 'Đã thêm vào giỏ hàng',
             'notify.removed_from_cart': 'Đã xóa khỏi giỏ hàng',
             'notify.cart_updated': 'Đã cập nhật giỏ hàng',
@@ -524,6 +571,15 @@ const I18N = {
             // Testimonials Section
             'testimonials.title': 'What Our Customers Say',
             'testimonials.subtitle': 'Positive feedback from our trusted ByteNest customers',
+            'testimonial.1.text': '"Bought a gaming laptop at ByteNest, better price than market, fast shipping and comprehensive warranty. Very satisfied with the service!"',
+            'testimonial.1.name': 'Nguyen Van A',
+            'testimonial.1.role': 'Streamer',
+            'testimonial.2.text': '"The consulting team was very enthusiastic, found a PC build with great value and strong performance. Thank you ByteNest!"',
+            'testimonial.2.name': 'Tran Thi B',
+            'testimonial.2.role': 'Designer',
+            'testimonial.3.text': '"Keychron Q1 purchased here, excellent quality! Just as advertised, typing feel is great."',
+            'testimonial.3.name': 'Le Minh C',
+            'testimonial.3.role': 'Developer',
 
             // Categories Page
             'categories.title': 'Product Categories',
@@ -550,6 +606,18 @@ const I18N = {
             'cta.explore': 'Explore Products',
             'cta.book': 'Book Service',
 
+            // Banner Slides
+            'banner.products.badge': '🔥 Hot Deals',
+            'banner.products.title': 'Products',
+            'banner.products.subtitle': 'Latest 2025',
+            'banner.products.desc': 'Discover our premium tech product collection now',
+            'banner.products.cta': 'View Now',
+            'banner.services.badge': '⚡ Fast Service',
+            'banner.services.title': 'Services',
+            'banner.services.subtitle': 'Professional',
+            'banner.services.desc': 'Repair and maintenance for your tech devices',
+            'banner.services.cta': 'Book Now',
+
             // Homepage Sections
             'section.featured.title': 'Featured Products',
             'section.featured.subtitle': 'Discover our hottest tech products',
@@ -557,6 +625,22 @@ const I18N = {
             'section.categories.subtitle': 'Wide range of authentic & imported tech products',
             'section.testimonials.title': 'What Our Customers Say',
             'section.testimonials.subtitle': 'Positive feedback from our trusted customers',
+
+            // Featured Products
+            'featured.badge.new': 'NEW',
+            'featured.badge.hot': 'HOT',
+            'featured.badge.sale': 'SALE',
+            'featured.badge.best': 'BEST',
+            'featured.category.laptop': 'LAPTOP',
+            'featured.category.keyboard': 'KEYBOARD',
+            'featured.category.mouse': 'MOUSE',
+            'featured.category.cpu': 'CPU',
+            'featured.product1.title': 'ASUS ROG Strix G15 Laptop (2025)',
+            'featured.product2.title': 'Monsgeek M1 V5 Keyboard',
+            'featured.product3.title': 'Logitech G Pro X Superlight 2 Mouse',
+            'featured.product4.title': 'AMD Ryzen 7 7800X3D',
+            'featured.addtocart': 'Add to Cart',
+            'featured.quickview': 'Quick View',
 
             // Features
             'feature.genuine': '100% Authentic',
@@ -578,16 +662,65 @@ const I18N = {
             'products.status': 'Status',
             'products.instock': 'In Stock',
             'products.outofstock': 'Out of Stock',
+            'products.sort.newest': 'Newest',
+            'products.sort.price_asc': 'Price: Low to High',
+            'products.sort.price_desc': 'Price: High to Low',
+            'products.sort.bestseller': 'Best Sellers',
+            'products.filter.price_range': 'Price Range',
+            'products.filter.brand': 'Brand',
+            'products.filter.category': 'Category',
+            'products.filter.availability': 'Availability',
+            'products.filter.apply': 'Apply',
+            'products.filter.reset': 'Reset',
+
+            // Product Categories
+            'category.laptop.gaming': 'Gaming Laptop',
+            'category.laptop.office': 'Office Laptop',
+            'category.laptop.graphic': 'Graphics Laptop',
+            'category.pc.gaming': 'Gaming PC',
+            'category.pc.workstation': 'PC Workstation',
+            'category.keyboard.mechanical': 'Mechanical Keyboard',
+            'category.mouse.gaming': 'Gaming Mouse',
+            'category.headphone.gaming': 'Gaming Headset',
+            'category.monitor': 'Monitor',
+            'category.chair.gaming': 'Gaming Chair',
+
+            // Product Details
+            'product.details.description': 'Product Description',
+            'product.details.specifications': 'Specifications',
+            'product.details.reviews': 'Reviews',
+            'product.details.shipping': 'Shipping Information',
+            'product.details.warranty': 'Warranty',
+            'product.details.quantity': 'Quantity',
+            'product.details.availability': 'Availability',
+            'product.details.sku': 'SKU',
+            'product.details.category': 'Category',
+            'product.details.brand': 'Brand',
+            'product.details.related': 'Related Products',
+            'product.details.addToCart': 'Add to Cart',
+            'product.details.buyNow': 'Buy Now',
+            'product.details.soldOut': 'Sold Out',
+            'product.details.inStock': 'In Stock',
+            'product.details.lowStock': 'Low Stock',
 
             // Services Page
-            'services.title': 'Our Services',
-            'services.subtitle': 'Comprehensive solutions for your tech devices',
-            'services.repair': 'Laptop & PC Repair',
-            'services.maintenance': 'Regular Maintenance',
-            'services.upgrade': 'Hardware Upgrades',
-            'services.data': 'Data Recovery',
-            'services.software': 'Software Installation',
-            'services.consultation': 'Solution Consultation',
+            'services.title': 'Professional Services',
+            'services.subtitle': 'Experienced technical team - Quality commitment',
+            'services.repair.title': 'Laptop/PC Repair',
+            'services.repair.desc': 'Repair all brands: Dell, HP, Asus, Lenovo, Macbook. 6-month warranty.',
+            'services.upgrade.title': 'Hardware Upgrades',
+            'services.upgrade.desc': 'Upgrade RAM, SSD, GPU. Suitable configuration consulting.',
+            'services.maintenance.title': 'Cleaning & Maintenance',
+            'services.maintenance.desc': 'Heatsink cleaning, thermal paste replacement, keyboard cleaning.',
+            'services.software.title': 'Software Installation',
+            'services.software.desc': 'Install Windows, Office, specialized software. License activation support.',
+            'services.business.title': 'Business Solutions',
+            'services.business.desc': 'IT consulting, office setup, network system management.',
+            'services.custom.title': 'Custom PC Build',
+            'services.custom.desc': 'Design and assemble PC on demand. Price-performance optimization.',
+            'services.cta.book': 'Book Now',
+            'services.cta.consult': 'Contact for Consultation',
+            'services.cta.free': 'Free Consultation',
 
             // Solutions Page
             'solutions.title': 'Solutions',
@@ -682,6 +815,7 @@ const I18N = {
             'notify.error': 'Error',
             'notify.warning': 'Warning',
             'notify.info': 'Information',
+            'notify.added': '✓ Added',
             'notify.added_to_cart': 'Product added to cart',
             'notify.removed_from_cart': 'Product removed from cart',
             'notify.cart_updated': 'Cart updated',
@@ -712,17 +846,32 @@ const I18N = {
     }
 };
 
+
 function applyTranslations(lang) {
     const dict = I18N.dict[lang] || I18N.dict[I18N.defaultLang];
 
-    // Replace element content for data-i18n
+    // Add fade-out animation class
+    document.body.classList.add('lang-transitioning');
+
+    // Replace element content for data-i18n with animation
     document.querySelectorAll('[data-i18n]').forEach(el => {
         const key = el.getAttribute('data-i18n');
         if (!key) return;
         const value = dict[key];
         if (value !== undefined) {
-            // allow HTML in translations for complex elements
-            el.innerHTML = value;
+            // Skip animation for buttons themselves, only animate their text
+            const isButtonText = el.tagName === 'SPAN' && el.closest('button');
+            
+            // Add fade effect
+            el.style.opacity = '0';
+            el.style.transform = isButtonText ? 'translateX(-3px)' : 'translateY(-5px)';
+            
+            setTimeout(() => {
+                // allow HTML in translations for complex elements
+                el.innerHTML = value;
+                el.style.opacity = '1';
+                el.style.transform = 'translateY(0)';
+            }, 150);
         }
     });
 
@@ -748,6 +897,11 @@ function applyTranslations(lang) {
     if (langBtn) {
         langBtn.setAttribute('aria-label', lang === 'en' ? 'Switch language to Vietnamese' : 'Chuyển sang tiếng Anh');
     }
+
+    // Remove transition class after animation completes
+    setTimeout(() => {
+        document.body.classList.remove('lang-transitioning');
+    }, 300);
 }
 
 function setLanguage(lang) {
@@ -769,6 +923,12 @@ function toggleLanguage() {
             btn.classList.remove('rotate');
         }, 500); // Match the animation duration (500ms)
         btn.setAttribute('data-lang', next);
+        
+        // Update button text to show current language
+        const langText = btn.querySelector('.lang-text');
+        if (langText) {
+            langText.textContent = next.toUpperCase(); // 'VI' or 'EN'
+        }
     }
     
     setLanguage(next);
@@ -778,6 +938,15 @@ function toggleLanguage() {
 document.addEventListener('DOMContentLoaded', () => {
     const saved = localStorage.getItem('site_lang') || I18N.defaultLang;
     setLanguage(saved);
+    
+    // Update language button text on page load
+    const btn = document.getElementById('langToggleBtn');
+    if (btn) {
+        const langText = btn.querySelector('.lang-text');
+        if (langText) {
+            langText.textContent = saved.toUpperCase(); // 'VI' or 'EN'
+        }
+    }
 });
 
 /* ======================= END I18N ======================= */

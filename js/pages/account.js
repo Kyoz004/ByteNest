@@ -29,6 +29,17 @@ document.getElementById('create-account-form').addEventListener('submit', functi
 });
 
 document.addEventListener('DOMContentLoaded', () => {
+    // Hide loading screen
+    const loadingScreen = document.getElementById('loading-screen');
+    if (loadingScreen) {
+        setTimeout(() => {
+            loadingScreen.style.opacity = '0';
+            setTimeout(() => {
+                loadingScreen.style.display = 'none';
+            }, 800);
+        }, 500); // Wait 500ms before starting fade out
+    }
+
     const defaultLang = 'vi';
     switchLanguage(defaultLang); 
     document.documentElement.lang = defaultLang;

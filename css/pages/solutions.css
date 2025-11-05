@@ -105,17 +105,8 @@
     transition: all 0.4s ease;
 }
 
-/* 6. Chỉ định ảnh nền (Giữ nguyên) */
-.banner-card:nth-child(1)::before {
-    background-image: url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=2071&auto-format&fit=crop');
-    background-position: center 30%;
-}
-.banner-card:nth-child(2)::before {
-    background-image: url('https://images.unsplash.com/photo-1626785774573-4b799315345d?q=80&w=2071&auto-format&fit=crop');
-}
-.banner-card:nth-child(3)::before {
-    background-image: url('/assets/banner_card_img/bci3.jpg');
-}
+/* 6. Ảnh nền được set từ HTML qua JavaScript (data-bg attribute) */
+/* Không cần hardcode URL trong CSS nữa */
 
 /* 7. Nội dung bên trong Card (Showroom Content)
    THAY ĐỔI: Text sẽ nằm trong 50% card, trên tấm kính

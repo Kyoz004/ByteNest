@@ -1,227 +1,490 @@
 /* ===============================================
-  BLOG PAGE (ByteBlog) - 2025 Tech Enhanced Version
+  BLOG PAGE (ByteBlog) - 2025 Redesign
 =============================================== */
 
-/* 1. Tiêu đề trang (Đồng bộ với các trang khác) */
 #blog {
-  position: relative;
-  background: linear-gradient(135deg, rgba(var(--primary-rgb), 0.05), rgba(14, 165, 233, 0.05));
-  background-size: 200% 200%;
-  animation: blogGradientShift 10s ease-in-out infinite;
-  border-radius: 20px;
-  padding: 80px 0;
-  overflow: hidden;
+  padding: 4rem 0;
+  min-height: 80vh;
 }
 
-@keyframes blogGradientShift {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-}
-
+/* Section Title */
 #blog .section-title {
   text-align: center;
-  margin-bottom: 50px;
-  max-width: 600px;
-  margin-left: auto;
-  margin-right: auto;
-  animation: fadeUp 1s ease both;
+  margin-bottom: 3rem;
+  animation: fadeInDown 0.6s ease;
 }
 
 #blog .section-title h2 {
-  font-size: 36px;
+  font-size: 2.5rem;
   font-weight: 800;
-  color: var(--text-dark);
-  margin-bottom: 10px;
-  position: relative;
-  display: inline-block;
-  padding-bottom: 10px;
-  text-shadow: 0 0 10px rgba(var(--primary-rgb), 0.25);
-}
-
-#blog .section-title h2::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 60px;
-  height: 4px;
-  background: var(--primary-color);
-  border-radius: 2px;
-  box-shadow: 0 0 15px rgba(var(--primary-rgb), 0.6);
-  animation: titleGlow 3s ease-in-out infinite;
-}
-
-@keyframes titleGlow {
-  0%, 100% { box-shadow: 0 0 10px rgba(var(--primary-rgb), 0.4); }
-  50% { box-shadow: 0 0 20px rgba(var(--primary-rgb), 0.8); }
+  background: linear-gradient(135deg, #0EA5E9 0%, #0284C7 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 0.75rem;
 }
 
 #blog .section-title p {
-  font-size: 18px;
+  font-size: 1.1rem;
   color: var(--text-gray);
-  line-height: 1.6;
+  max-width: 700px;
+  margin: 0 auto;
 }
 
-/* 2. CSS cho Card Blog */
-.product-card {
-  display: flex;
-  flex-direction: column;
-}
-
-/* Container cho ảnh blog */
-.blog-card .product-image-container {
-  height: 220px;
-  width: 100%;
+/* Featured Post */
+.featured-post {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 0;
+  background: var(--bg-light);
+  border-radius: 24px;
   overflow: hidden;
-  border-bottom: 1px solid var(--border-color);
-  border-radius: 14px 14px 0 0;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+  margin-bottom: 4rem;
+  border: 2px solid var(--border-color);
+  transition: all 0.4s ease;
+  animation: fadeInUp 0.8s ease;
+  max-height: 450px;
+}
+
+.featured-post:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 60px rgba(14, 165, 233, 0.2);
+  border-color: #0EA5E9;
+}
+
+.featured-image {
   position: relative;
+  overflow: hidden;
+  height: 100%;
+  min-height: 450px;
+  max-height: 450px;
 }
 
-/* Particle light subtle overlay */
-.blog-card .product-image-container::after {
-  content: "";
-  position: absolute;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
-  background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.1), transparent 60%);
-  animation: lightDrift 8s ease-in-out infinite alternate;
-  pointer-events: none;
-}
-
-@keyframes lightDrift {
-  0% { transform: translate(0,0); opacity: 0.6; }
-  50% { transform: translate(10px, -10px); opacity: 0.9; }
-  100% { transform: translate(-10px, 10px); opacity: 0.6; }
-}
-
-.blog-card .product-image {
+.featured-image img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.8s cubic-bezier(0.23, 1, 0.32, 1), filter 0.4s ease;
+  transition: transform 0.6s ease;
 }
 
-.blog-card:hover .product-image {
-  transform: scale(1.1) rotate(0.5deg);
-  filter: brightness(1.08) saturate(1.05);
+.featured-post:hover .featured-image img {
+  transform: scale(1.08);
 }
 
-/* Card container nâng cấp */
+.featured-badge {
+  position: absolute;
+  top: 20px;
+  /* left: 20px; */
+  background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+  color: white;
+  padding: 8px 20px;
+  border-radius: 30px;
+  font-size: 13px;
+  font-weight: 700;
+  box-shadow: 0 4px 15px rgba(245, 158, 11, 0.4);
+  z-index: 10;
+}
+
+.featured-content {
+  padding: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  max-height: 450px;
+  overflow: hidden;
+}
+
+.post-category {
+  display: inline-block;
+  padding: 6px 16px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 1.5rem;
+  align-self: flex-start;
+}
+
+.post-category.featured {
+  background: rgba(14, 165, 233, 0.15);
+  color: #0EA5E9;
+}
+
+.featured-content h2 {
+  font-size: 1.65rem;
+  font-weight: 800;
+  color: var(--text-dark);
+  margin-bottom: 0.75rem;
+  line-height: 1.3;
+  display: -webkit-box;
+  line-clamp: 2;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.featured-excerpt {
+  font-size: 0.95rem;
+  color: var(--text-gray);
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+  display: -webkit-box;
+  line-clamp: 3;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.post-meta {
+  display: flex;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  font-size: 0.85rem;
+  color: var(--text-gray);
+  margin-bottom: 1.5rem;
+}
+
+.post-meta span {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.post-meta i {
+  color: #0EA5E9;
+}
+
+/* Filter Section */
+.blog-filter-section {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+  margin-bottom: 3rem;
+  flex-wrap: wrap;
+}
+
+.blog-search {
+  position: relative;
+  flex: 1;
+  min-width: 300px;
+}
+
+.blog-search i {
+  position: absolute;
+  left: 18px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #0EA5E9;
+  font-size: 1.1rem;
+}
+
+.blog-search input {
+  width: 100%;
+  padding: 14px 20px 14px 50px;
+  border: 2px solid var(--border-color);
+  border-radius: 50px;
+  font-size: 1rem;
+  background: var(--bg-light);
+  transition: all 0.3s ease;
+}
+
+.blog-search input:focus {
+  outline: none;
+  border-color: #0EA5E9;
+  box-shadow: 0 4px 20px rgba(14, 165, 233, 0.15);
+}
+
+.blog-categories {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.category-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  border: 2px solid var(--border-color);
+  border-radius: 50px;
+  background: var(--bg-light);
+  color: var(--text-dark);
+  font-weight: 600;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+}
+
+.category-btn:hover {
+  border-color: #0EA5E9;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(14, 165, 233, 0.15);
+}
+
+.category-btn.active {
+  background: linear-gradient(135deg, #0EA5E9 0%, #0284C7 100%);
+  color: white;
+  border-color: transparent;
+  box-shadow: 0 6px 18px rgba(14, 165, 233, 0.35);
+}
+
+/* Blog Grid */
+.blog-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 2rem;
+  margin-bottom: 3rem;
+}
+
+/* Blog Card */
 .blog-card {
-  background: rgba(255,255,255,0.04);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(var(--primary-rgb), 0.15);
-  border-radius: 18px;
-  transition: transform 0.4s ease, box-shadow 0.4s ease;
-  animation: fadeUp 0.8s ease both;
+  background: var(--bg-light);
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  transition: all 0.4s ease;
+  border: 2px solid transparent;
+  display: flex;
+  flex-direction: column;
+  animation: fadeInUp 0.6s ease;
 }
 
 .blog-card:hover {
-  transform: translateY(-8px) scale(1.02);
-  box-shadow: 0 10px 25px rgba(var(--primary-rgb), 0.25);
+  transform: translateY(-8px);
+  box-shadow: 0 12px 40px rgba(14, 165, 233, 0.2);
+  border-color: #0EA5E9;
 }
 
-/* Nội dung trong card */
-.product-card.blog-card .product-info {
-  padding: 25px;
+.blog-card-image {
+  position: relative;
+  height: 240px;
+  overflow: hidden;
+}
+
+.blog-card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s ease;
+}
+
+.blog-card:hover .blog-card-image img {
+  transform: scale(1.1);
+}
+
+.post-tag {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: white;
+  z-index: 10;
+  letter-spacing: 0.5px;
+}
+
+.post-tag.review {
+  background: linear-gradient(135deg, #0EA5E9 0%, #0284C7 100%);
+}
+
+.post-tag.tutorial {
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+}
+
+.post-tag.guide {
+  background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);
+}
+
+.post-tag.news {
+  background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+}
+
+.blog-card-content {
+  padding: 1.75rem;
   display: flex;
   flex-direction: column;
   flex-grow: 1;
 }
 
-/* Chip category */
-.product-card.blog-card .product-category {
-  color: var(--primary-color);
-  background: rgba(var(--primary-rgb), 0.1);
-  font-size: 12px;
+.blog-card h3 {
+  font-size: 1.25rem;
   font-weight: 700;
-  text-transform: uppercase;
-  padding: 5px 12px;
-  border-radius: 20px;
-  margin-bottom: 15px;
-  align-self: flex-start;
-  letter-spacing: 0.5px;
-  transition: all 0.3s ease;
-}
-
-.product-card.blog-card .product-category:hover {
-  background: rgba(var(--primary-rgb), 0.25);
-}
-
-/* Tiêu đề bài viết */
-.product-card.blog-card .product-title {
-  font-size: 20px;
-  font-weight: 700;
-  margin-bottom: 12px;
   color: var(--text-dark);
+  margin-bottom: 1rem;
+  line-height: 1.4;
   display: -webkit-box;
+  line-clamp: 2;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
-  min-height: 50px;
-  transition: color 0.3s ease;
+  min-height: 56px;
 }
 
-.product-card.blog-card:hover .product-title {
-  color: var(--primary-color);
-}
-
-/* Đoạn trích */
-.blog-excerpt {
+.blog-card p {
+  font-size: 0.95rem;
   color: var(--text-gray);
-  font-size: 15px;
   line-height: 1.6;
-  margin-bottom: 25px;
+  margin-bottom: 1.5rem;
   display: -webkit-box;
+  line-clamp: 3;
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
   overflow: hidden;
   flex-grow: 1;
 }
 
-/* Nút "Đọc thêm" */
-.product-card.blog-card .btn.btn-secondary {
-  position: relative;
-  overflow: hidden;
-  background: var(--bg-gray);
+.blog-card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border-color);
+  margin-top: auto;
+}
+
+.blog-card-footer .post-meta {
+  margin: 0;
+  font-size: 0.85rem;
+  gap: 1rem;
+}
+
+.read-more {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: #0EA5E9;
+  font-weight: 600;
+  font-size: 0.9rem;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.read-more:hover {
+  gap: 10px;
+  color: #0284C7;
+}
+
+/* Load More */
+.load-more-section {
+  text-align: center;
+  padding: 2rem 0;
+}
+
+.btn-outline {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 32px;
+  border: 2px solid var(--border-color);
+  border-radius: 50px;
+  background: transparent;
   color: var(--text-dark);
   font-weight: 600;
-  padding: 12px 28px;
-  border: none;
-  border-radius: 10px;
+  font-size: 1rem;
   cursor: pointer;
-  align-self: flex-start;
   transition: all 0.3s ease;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.05);
-  margin-top: auto;
-  text-decoration: none;
 }
 
-.product-card.blog-card .btn.btn-secondary::before {
-  content: "";
-  position: absolute;
-  top: 0; left: -100%;
-  width: 100%; height: 100%;
-  background: linear-gradient(120deg, rgba(var(--primary-rgb), 0.4), transparent);
-  transition: all 0.5s ease;
-}
-
-.product-card.blog-card .btn.btn-secondary:hover::before {
-  left: 100%;
-}
-
-.product-card.blog-card .btn.btn-secondary:hover {
-  background: var(--primary-color);
+.btn-outline:hover {
+  background: linear-gradient(135deg, #0EA5E9 0%, #0284C7 100%);
   color: white;
-  box-shadow: 0 6px 12px rgba(var(--primary-rgb), 0.3);
-  transform: translateY(-2px) scale(1.02);
+  border-color: transparent;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(14, 165, 233, 0.3);
 }
 
-/* Animation cơ bản */
-@keyframes fadeUp {
-  0% { opacity: 0; transform: translateY(25px); }
-  100% { opacity: 1; transform: translateY(0); }
+/* Animations */
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .featured-post {
+    grid-template-columns: 1fr;
+  }
+  
+  .featured-image {
+    min-height: 300px;
+  }
+  
+  .blog-grid {
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  }
+}
+
+@media (max-width: 768px) {
+  #blog .section-title h2 {
+    font-size: 2rem;
+  }
+  
+  .featured-content {
+    padding: 2rem;
+  }
+  
+  .featured-content h2 {
+    font-size: 1.5rem;
+  }
+  
+  .blog-filter-section {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  .blog-search {
+    width: 100%;
+  }
+  
+  .blog-categories {
+    overflow-x: auto;
+    padding-bottom: 10px;
+  }
+  
+  .category-btn {
+    flex-shrink: 0;
+  }
+  
+  .blog-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .featured-content {
+    padding: 1.5rem;
+  }
+  
+  .featured-excerpt {
+    font-size: 0.95rem;
+  }
+  
+  .post-meta {
+    gap: 1rem;
+    font-size: 0.8rem;
+  }
 }

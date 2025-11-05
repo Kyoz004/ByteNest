@@ -16,13 +16,16 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 </head>
 <body>
-    <!-- PHẦN NÀY GIỮ NGUYÊN -->
     <div id="loading-screen">
-        <div class="light-sweep"></div>
-        <div class="logo-reveal"><span>BYTENEST</span></div>
+        <div class="loader" role="status" aria-label="Loading">
+            <span class="loader__box"></span>
+            <span class="loader__box"></span>
+            <span class="loader__box"></span>
+            <span class="loader__box"></span>
+            <span class="loader__box"></span>
+        </div>
     </div>
 
-    <!-- PHẦN NÀY GIỮ NGUYÊN -->
     <button id="scrollTopBtn" title="Lên đầu trang">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
             <path d="M11.9999 10.8284L7.05019 15.7782L5.63599 14.364L11.9999 8L18.3639 14.364L16.9497 15.7782L11.9999 10.8284Z"></path>
@@ -41,14 +44,14 @@
                 <span>🎉 SALE OFF cho đơn hàng trên 1 triệu | Nhập mã: <strong>TOTHENESTTEC</strong> giảm thêm 20%</span>
                 <span>🎉 BUILD PC ĐỘC QUYỀN | Nhập mã: <strong>BUILDNEST</strong> giảm ngay 500K</span>
                 <span>🎉 DỊCH VỤ SỬA CHỮA | Nhập mã: <strong>FIXITFAST</strong> giảm 15% tổng hóa đơn</span>
-                <span>🎉 MUA KÈM GEAR (Phím, Chuột) | Nhập mã: <strong>GEARUP</strong> giảm 12%</span>
+                <span>🔥 Sản phẩm Chính hãng – Xuất VAT đầy đủ</span>
                 
                 <!-- 3. Bộ tin nhắn LẶP LẠI (copy y hệt để chạy liền mạch) -->
                 <span>🎉 FREESHIP cho đơn hàng trên 500K | Nhập mã: <strong>TECH2025</strong> giảm thêm 10%</span>
                 <span>🎉 SALE OFF cho đơn hàng trên 1 triệu | Nhập mã: <strong>TOTHENESTTEC</strong> giảm thêm 20%</span>
                 <span>🎉 BUILD PC ĐỘC QUYỀN | Nhập mã: <strong>BUILDNEST</strong> giảm ngay 500K</span>
                 <span>🎉 DỊCH VỤ SỬA CHỮA | Nhập mã: <strong>FIXITFAST</strong> giảm 15% tổng hóa đơn</span>
-                <span>🎉 MUA KÈM GEAR (Phím, Chuột) | Nhập mã: <strong>GEARUP</strong> giảm 12%</span>
+                <span>🔥 Sản phẩm Chính hãng – Xuất VAT đầy đủ</span>
             
             </div> <!-- Kết thúc .marquee-text -->
         </div> <!-- Kết thúc .promo-content -->
@@ -148,12 +151,12 @@
                         <path stroke-linecap="round" stroke-linejoin="round" d="M17.982 18.725A7.488 7.488 0 0012 15.75a7.488 7.488 0 00-5.982 2.975m11.963 0a9 9 0 10-11.963 0m11.963 0A8.966 8.966 0 0112 21a8.966 8.966 0 01-5.982-2.275M15 9.75a3 3 0 11-6 0 3 3 0 016 0z" />
                     </svg>
                 </a>
-                <button onclick="openCart()" data-i18n-title="cart.title" title="Giỏ hàng">
+                <a href="cart.html" data-i18n-title="cart.title" title="Giỏ hàng" style="position: relative;">
                     <svg class="icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c.51 0 .962-.343 1.087-.835l1.823-6.441a.75.75 0 00-.543-.922H5.821a.75.75 0 00-.722.534L3 14.25zM7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c.51 0 .962-.343 1.087-.835l1.823-6.441a.75.75 0 00-.543-.922H5.821a.75.75 0 00-.722.534L3 14.25zM7.5 14.25h11.218m-13.5 3a3 3 0 116 0 3 3 0 01-6 0z" />
                     </svg>
                     <span class="cart-badge" id="cartCount">0</span>
-                </button>
+                </a>
                 
                 <button class="mobile-menu-btn" onclick="toggleMobileMenu()" aria-expanded="false" aria-controls="mobileNav">
                     <svg class="icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
@@ -212,16 +215,16 @@
                 <div class="hero-overlay"></div>
                 <div class="hero-content">
                     <div class="hero-badge">
-                        <span>🔥 Hot Deals</span>
+                        <span data-i18n="banner.products.badge">🔥 Hot Deals</span>
                     </div>
                     <h1 class="hero-title">
-                        <span class="gradient-text">Sản phẩm</span>
-                        <br>Mới nhất 2025
+                        <span class="gradient-text" data-i18n="banner.products.title">Sản phẩm</span>
+                        <br><span data-i18n="banner.products.subtitle">Mới nhất 2025</span>
                     </h1>
-                    <p class="hero-subtitle">Khám phá ngay bộ sưu tập sản phẩm công nghệ đỉnh cao</p>
+                    <p class="hero-subtitle" data-i18n="banner.products.desc">Khám phá ngay bộ sưu tập sản phẩm công nghệ đỉnh cao</p>
                     <div class="cta-buttons">
                         <a href="products.html" class="btn btn-hero-primary">
-                            <span>Xem ngay</span>
+                            <span data-i18n="banner.products.cta">Xem ngay</span>
                             <svg class="btn-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
                             </svg>
@@ -233,16 +236,16 @@
                 <div class="hero-overlay"></div>
                 <div class="hero-content">
                     <div class="hero-badge">
-                        <span>⚡ Fast Service</span>
+                        <span data-i18n="banner.services.badge">⚡ Fast Service</span>
                     </div>
                     <h1 class="hero-title">
-                        <span class="gradient-text">Dịch vụ</span>
-                        <br>Chuyên nghiệp
+                        <span class="gradient-text" data-i18n="banner.services.title">Dịch vụ</span>
+                        <br><span data-i18n="banner.services.subtitle">Chuyên nghiệp</span>
                     </h1>
-                    <p class="hero-subtitle">Sửa chữa và bảo trì thiết bị công nghệ của bạn</p>
+                    <p class="hero-subtitle" data-i18n="banner.services.desc">Sửa chữa và bảo trì thiết bị công nghệ của bạn</p>
                     <div class="cta-buttons">
                         <a href="services.html" class="btn btn-hero-primary">
-                            <span>Đặt lịch ngay</span>
+                            <span data-i18n="banner.services.cta">Đặt lịch ngay</span>
                             <svg class="btn-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
                             </svg>
@@ -322,16 +325,16 @@
     <div class="container">
         <div class="section-title">
             <h2 data-i18n="section.featured.title">Sản phẩm nổi bật</h2>
-            <p>Khám phá những sản phẩm công nghệ hot nhất hiện tại</p>
+            <p data-i18n="section.featured.subtitle">Khám phá những sản phẩm công nghệ hot nhất hiện tại</p>
         </div>
         <div class="featured-grid">
             
             <div class="featured-card">
-                <span class="featured-badge">NEW</span>
+                <span class="featured-badge" data-i18n="featured.badge.new">NEW</span>
                 <img src="assets/products_img/lap1.jpg" alt="Product" class="featured-image">
                 <div class="featured-info">
-                    <span class="featured-category">LAPTOP</span>
-                    <h3 class="featured-title">Laptop ASUS ROG Strix G15 (2025)</h3>
+                    <span class="featured-category" data-i18n="featured.category.laptop">LAPTOP</span>
+                    <h3 class="featured-title" data-i18n="featured.product1.title">Laptop ASUS ROG Strix G15 (2025)</h3>
                     <div class="featured-rating">
                         <span class="stars">★★★★★</span>
                         <span>(4.9/5)</span>
@@ -343,20 +346,20 @@
                     <div class="featured-actions">
                         <button class="btn-add-cart" onclick="addToCart(event, 'ASUS ROG Strix G15', 35990000)">
                             <i class="bi bi-cart-plus"></i>
-                            <span>Thêm giỏ hàng</span>
+                            <span data-i18n="featured.addtocart">Thêm giỏ hàng</span>
                         </button>
-                        <button class="btn-quick-view" title="Xem nhanh">
+                        <button class="btn-quick-view" data-i18n-title="featured.quickview" title="Xem nhanh">
                             <i class="bi bi-eye"></i> </button>
                     </div>
                 </div>
             </div>
 
             <div class="featured-card">
-                <span class="featured-badge">HOT</span>
+                <span class="featured-badge" data-i18n="featured.badge.hot">HOT</span>
                 <img src="assets/products_img/key1.jpg" alt="Product" class="featured-image">
                 <div class="featured-info">
-                    <span class="featured-category">BÀN PHÍM</span>
-                    <h3 class="featured-title">Bàn phím Monsgeek M1 V5</h3>
+                    <span class="featured-category" data-i18n="featured.category.keyboard">BÀN PHÍM</span>
+                    <h3 class="featured-title" data-i18n="featured.product2.title">Bàn phím Monsgeek M1 V5</h3>
                     <div class="featured-rating">
                         <span class="stars">★★★★★</span>
                         <span>(4.8/5)</span>
@@ -368,20 +371,20 @@
                     <div class="featured-actions">
                         <button class="btn-add-cart" onclick="addToCart(event, 'Bàn phím Monsgeek M1 V5', 2190000)">
                             <i class="bi bi-cart-plus"></i>
-                            <span>Thêm giỏ hàng</span>
+                            <span data-i18n="featured.addtocart">Thêm giỏ hàng</span>
                         </button>
-                        <button class="btn-quick-view" title="Xem nhanh">
+                        <button class="btn-quick-view" data-i18n-title="featured.quickview" title="Xem nhanh">
                             <i class="bi bi-eye"></i> </button>
                     </div>
                 </div>
             </div>
 
             <div class="featured-card">
-                <span class="featured-badge">SALE</span>
+                <span class="featured-badge" data-i18n="featured.badge.sale">SALE</span>
                 <img src="assets/products_img/chuot1.jpg" alt="Product" class="featured-image">
                 <div class="featured-info">
-                    <span class="featured-category">CHUỘT</span>
-                    <h3 class="featured-title">Chuột Logitech G Pro X Superlight 2</h3>
+                    <span class="featured-category" data-i18n="featured.category.mouse">CHUỘT</span>
+                    <h3 class="featured-title" data-i18n="featured.product3.title">Chuột Logitech G Pro X Superlight 2</h3>
                     <div class="featured-rating">
                         <span class="stars">★★★★★</span>
                         <span>(4.9/5)</span>
@@ -393,20 +396,20 @@
                     <div class="featured-actions">
                         <button class="btn-add-cart" onclick="addToCart(event, 'Logitech G Pro X Superlight 2', 3190000)">
                             <i class="bi bi-cart-plus"></i>
-                            <span>Thêm giỏ hàng</span>
+                            <span data-i18n="featured.addtocart">Thêm giỏ hàng</span>
                         </button>
-                        <button class="btn-quick-view" title="Xem nhanh">
+                        <button class="btn-quick-view" data-i18n-title="featured.quickview" title="Xem nhanh">
                             <i class="bi bi-eye"></i> </button>
                     </div>
                 </div>
             </div>
 
             <div class="featured-card">
-                <span class="featured-badge">BEST</span>
+                <span class="featured-badge" data-i18n="featured.badge.best">BEST</span>
                 <img src="https://images.unsplash.com/photo-1591799264318-7e6ef8ddb7ea?w=400" alt="Product" class="featured-image">
                 <div class="featured-info">
-                    <span class="featured-category">CPU</span>
-                    <h3 class="featured-title">AMD Ryzen 7 7800X3D</h3>
+                    <span class="featured-category" data-i18n="featured.category.cpu">CPU</span>
+                    <h3 class="featured-title" data-i18n="featured.product4.title">AMD Ryzen 7 7800X3D</h3>
                     <div class="featured-rating">
                         <span class="stars">★★★★★</span>
                         <span>(5.0/5)</span>
@@ -418,9 +421,9 @@
                     <div class="featured-actions">
                         <button class="btn-add-cart" onclick="addToCart(event, 'AMD Ryzen 7 7800X3D', 9990000)">
                             <i class="bi bi-cart-plus"></i>
-                            <span>Thêm giỏ hàng</span>
+                            <span data-i18n="featured.addtocart">Thêm giỏ hàng</span>
                         </button>
-                        <button class="btn-quick-view" title="Xem nhanh">
+                        <button class="btn-quick-view" data-i18n-title="featured.quickview" title="Xem nhanh">
                             <i class="bi bi-eye"></i> </button>
                     </div>
                 </div>
@@ -534,40 +537,40 @@
 
     <div class="testimonials">
         <div class="section-title">
-            <h2>Khách hàng nói gì về chúng tôi</h2>
-            <p>Những phản hồi tích cực từ khách hàng tin tưởng ByteNest</p>
+            <h2 data-i18n="testimonials.title">Khách hàng nói gì về chúng tôi</h2>
+            <p data-i18n="testimonials.subtitle">Những phản hồi tích cực từ khách hàng tin tưởng ByteNest</p>
         </div>
         <div class="testimonial-grid">
             <div class="testimonial-card">
                 <div class="testimonial-rating">★★★★★</div>
-                <p class="testimonial-text">"Mua laptop gaming tại ByteNest, giá tốt hơn thị trường, ship nhanh và có bảo hành chu đáo. Rất hài lòng với dịch vụ!"</p>
+                <p class="testimonial-text" data-i18n="testimonial.1.text">"Mua laptop gaming tại ByteNest, giá tốt hơn thị trường, ship nhanh và có bảo hành chu đáo. Rất hài lòng với dịch vụ!"</p>
                 <div class="testimonial-author">
                     <img src="https://i.pravatar.cc/150?img=12" alt="Customer">
                     <div>
-                        <h4>Nguyễn Văn A</h4>
-                        <span>Streamer</span>
+                        <h4 data-i18n="testimonial.1.name">Nguyễn Văn A</h4>
+                        <span data-i18n="testimonial.1.role">Streamer</span>
                     </div>
                 </div>
             </div>
             <div class="testimonial-card">
                 <div class="testimonial-rating">★★★★★</div>
-                <p class="testimonial-text">"Đội ngũ tư vấn rất nhiệt tình, tìm được bộ PC build giá tốt mà hiệu năng mạnh. Cảm ơn ByteNest!"</p>
+                <p class="testimonial-text" data-i18n="testimonial.2.text">"Đội ngũ tư vấn rất nhiệt tình, tìm được bộ PC build giá tốt mà hiệu năng mạnh. Cảm ơn ByteNest!"</p>
                 <div class="testimonial-author">
                     <img src="https://i.pravatar.cc/150?img=13" alt="Customer">
                     <div>
-                        <h4>Trần Thị B</h4>
-                        <span>Designer</span>
+                        <h4 data-i18n="testimonial.2.name">Trần Thị B</h4>
+                        <span data-i18n="testimonial.2.role">Designer</span>
                     </div>
                 </div>
             </div>
             <div class="testimonial-card">
                 <div class="testimonial-rating">★★★★★</div>
-                <p class="testimonial-text">"Keychron Q1 mua tại đây, chất lượng tuyệt vời! Đúng như quảng cáo, cảm giác gõ rất tốt."</p>
+                <p class="testimonial-text" data-i18n="testimonial.3.text">"Keychron Q1 mua tại đây, chất lượng tuyệt vời! Đúng như quảng cáo, cảm giác gõ rát tốt."</p>
                 <div class="testimonial-author">
                     <img src="https://i.pravatar.cc/150?img=14" alt="Customer">
                     <div>
-                        <h4>Lê Minh C</h4>
-                        <span>Developer</span>
+                        <h4 data-i18n="testimonial.3.name">Lê Minh C</h4>
+                        <span data-i18n="testimonial.3.role">Developer</span>
                     </div>
                 </div>
             </div>

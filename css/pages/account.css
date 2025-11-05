@@ -1,277 +1,738 @@
 /* ============================================
-   ByteNest Account Page - Tech Blue Theme 2025
+   ByteNest Account Page - Modern Glassmorphism 2025
 ============================================ */
 
-/* --- Bảng màu Tech Blue --- */
 :root {
-  --primary-color: #2563EB;      /* Xanh công nghệ mạnh */
-  --accent-color: #0EA5E9;       /* Cyan ánh sáng */
-  --bg-light: #F1F5F9;           /* Nền sáng */
-  --bg-dark: #0A192F;            /* Nền tối - dùng cho phần branding */
-  --bg-gray: #1E293B;            /* Xám đậm */
-  --text-dark: #1E293B;          /* Chữ chính */
-  --text-light: #94A3B8;         /* Chữ phụ */
-  --border-color: #CBD5E1;       /* Viền mờ */
-  --hover-color: #1D4ED8;        /* Màu hover đậm */
-  --success-color: #22C55E;      /* Xanh tín hiệu */
-  --danger-color: #EF4444;       /* Đỏ cảnh báo */
+  /* Updated to match index page colors */
+  --primary-gradient: linear-gradient(135deg, #0EA5E9 0%, #06B6D4 100%);
+  --accent-gradient: linear-gradient(135deg, #06B6D4 0%, #0284C7 100%);
+  --blue-gradient: linear-gradient(135deg, #0EA5E9 0%, #06B6D4 100%);
+  --cyan-gradient: linear-gradient(135deg, #06B6D4 0%, #22D3EE 100%);
+  
+  --primary-color: #0EA5E9;
+  --accent-color: #06B6D4;
+  --text-dark: #1a202c;
+  --text-light: #718096;
+  --border-color: rgba(226, 232, 240, 0.8);
+  --glass-bg: rgba(255, 255, 255, 0.7);
+  --glass-border: rgba(255, 255, 255, 0.18);
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.04);
+  --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.08);
+  --shadow-lg: 0 20px 40px rgba(0, 0, 0, 0.12);
 }
 
-/* --- Thiết kế chung --- */
-body.account-page {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-  background: var(--bg-light);
-  color: var(--text-dark);
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+
+body.account-page {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  color: var(--text-dark);
+  overflow-x: hidden;
+  position: relative;
+  min-height: 100vh;
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-.account-page *, .account-page *:before, .account-page *:after {
-  box-sizing: inherit;
+/* ============================================
+   Animated Background - Match Index (Sky/Cyan)
+============================================ */
+.animated-bg {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  /* Đây là phần nền đã được thay đổi theo yêu cầu của bạn */
+  background: linear-gradient(135deg, #0EA5E9 0%, #06B6D4 60%, #22D3EE 100%);
+  overflow: hidden;
 }
 
+.gradient-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.35;
+  animation: float 20s ease-in-out infinite;
+}
+
+.orb-1 {
+  width: 320px;
+  height: 320px;
+  background: radial-gradient(circle, rgba(14, 165, 233, 0.55), transparent);
+  top: -10%;
+  left: -10%;
+  animation-delay: 0s;
+}
+
+.orb-2 {
+  width: 280px;
+  height: 280px;
+  background: radial-gradient(circle, rgba(6, 182, 212, 0.45), transparent);
+  bottom: -10%;
+  right: -5%;
+  animation-delay: 5s;
+}
+
+.orb-3 {
+  width: 240px;
+  height: 240px;
+  background: radial-gradient(circle, rgba(34, 211, 238, 0.35), transparent);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  animation-delay: 10s;
+}
+
+.grid-pattern {
+  position: absolute;
+  inset: 0;
+  background-image: 
+    linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+  background-size: 50px 50px;
+  animation: gridMove 20s linear infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(30px, -30px) scale(1.1); }
+  66% { transform: translate(-20px, 20px) scale(0.9); }
+}
+
+@keyframes gridMove {
+  0% { transform: translate(0, 0); }
+  100% { transform: translate(50px, 50px); }
+}
+
+/* ============================================
+   Container & Card - Compact Size
+============================================ */
 .account-container {
+  position: relative;
+  z-index: 1;
   display: flex;
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  padding: 20px;
+  padding: 30px 20px;
 }
 
-/* --- Card chính --- */
 .account-card {
   display: flex;
   width: 100%;
-  max-width: 1000px;
-  background: #FFFFFF;
-  border-radius: 20px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+  max-width: 760px; /* Reduced */
+  background: var(--glass-bg);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-radius: 14px; /* Reduced */
+  border: 1px solid var(--glass-border);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
   overflow: hidden;
+  animation: cardSlideIn 0.8s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-/* --- Cột trái (Branding) --- */
+@keyframes cardSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(30px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* ============================================
+   Branding Section (Left) - More Compact
+============================================ */
 .account-branding {
-  flex-basis: 40%;
-  background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
-  background-size: 200% 200%;
-  animation: gradientShift 8s ease infinite, fadeInBranding 1.5s ease forwards;
-  color: #fff;
-  padding: 50px 40px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
+  flex: 0 0 36%; /* Reduced */
+  background: var(--primary-gradient);
   position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 30px 22px; /* Reduced */
   overflow: hidden;
 }
 
-/* --- Hiệu ứng ánh sáng lan --- */
-.account-branding::after {
-  content: "";
-  position: absolute;
-  top: -50%;
-  left: -50%;
-  width: 200%;
-  height: 200%;
-  background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.15), transparent 70%);
-  animation: lightPulse 6s ease-in-out infinite;
-  z-index: 0;
-}
-
-/* --- Particle Layer --- */
-.account-branding .particles {
+.account-branding::before {
+  content: '';
   position: absolute;
   inset: 0;
-  overflow: hidden;
-  z-index: 0;
+  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="40" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="0.5"/><circle cx="50" cy="50" r="30" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="0.5"/><circle cx="50" cy="50" r="20" fill="none" stroke="rgba(255,255,255,0.06)" stroke-width="0.5"/></svg>') center/300px no-repeat;
+  opacity: 0.3;
+  animation: rotate 30s linear infinite;
 }
 
-.particle {
-  position: absolute;
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.35);
-  box-shadow: 0 0 10px rgba(255, 255, 255, 0.6);
-  animation: floatParticle linear infinite;
+@keyframes rotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
 }
 
-/* Tạo ngẫu nhiên bằng nth-child */
-.particle:nth-child(1) { top: 20%; left: 10%; animation-duration: 8s; animation-delay: 0s; }
-.particle:nth-child(2) { top: 60%; left: 30%; animation-duration: 10s; animation-delay: 2s; }
-.particle:nth-child(3) { top: 80%; left: 70%; animation-duration: 9s; animation-delay: 1s; }
-.particle:nth-child(4) { top: 40%; left: 90%; animation-duration: 7s; animation-delay: 3s; }
-.particle:nth-child(5) { top: 10%; left: 50%; animation-duration: 11s; animation-delay: 1.5s; }
-.particle:nth-child(6) { top: 85%; left: 25%; animation-duration: 12s; animation-delay: 0.5s; }
-
-/* --- Logo và text nổi bật hơn --- */
-.account-branding .logo,
-.account-branding h1,
-.account-branding p {
+.branding-content {
   position: relative;
   z-index: 1;
+  text-align: center;
+  color: white;
 }
 
-.account-branding h1 {
-  font-size: 32px;
+.logo-link {
+  display: inline-block;
+  margin-bottom: 18px; /* Reduced */
+  transition: transform 0.3s ease;
+}
+
+.logo-link:hover {
+  transform: scale(1.05);
+}
+
+.logo {
+  max-width: 110px; /* Reduced */
+  height: auto;
+  filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.2));
+  animation: logoFloat 3s ease-in-out infinite;
+}
+
+@keyframes logoFloat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+.welcome-text h1 {
+  font-size: 22px; /* Reduced */
   font-weight: 700;
-  margin: 10px 0;
+  margin-bottom: 6px; /* Reduced */
+  line-height: 1.2;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.welcome-text p {
+  font-size: 13px; /* Reduced */
+  opacity: 0.95;
+  font-weight: 400;
+}
+
+/* Features Mini Icons - More Compact */
+.features-mini {
+  display: flex;
+  gap: 16px; /* Reduced */
+  justify-content: center;
+  margin-top: 24px; /* Reduced */
+}
+
+.feature-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px; /* Reduced */
+}
+
+.feature-item svg {
+  width: 24px; /* Reduced */
+  height: 24px;
+  opacity: 0.9;
+}
+
+.feature-item span {
+  font-size: 10px; /* Reduced */
+  font-weight: 600;
+  opacity: 0.95;
+  text-transform: uppercase;
   letter-spacing: 0.5px;
-  text-shadow: 0 0 15px rgba(255,255,255,0.35);
 }
 
-.account-branding p {
-  font-size: 15px;
-  color: rgba(255,255,255,0.85);
+/* Tech Decoration */
+.tech-decoration {
+  position: absolute;
+  bottom: 30px; /* Reduced from 40px */
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 6px; /* Reduced from 8px */
 }
 
-/* --- Animation Keyframes --- */
-@keyframes gradientShift {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
+.tech-line {
+  width: 50px; /* Reduced from 60px */
+  height: 2px; /* Reduced from 3px */
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 2px;
+  animation: pulse 2s ease-in-out infinite;
 }
 
-@keyframes lightPulse {
-  0%, 100% { opacity: 0.4; transform: scale(1); }
-  50% { opacity: 0.7; transform: scale(1.05); }
+.tech-line:nth-child(2) {
+  animation-delay: 0.3s;
+  width: 35px; /* Reduced from 40px */
 }
 
-@keyframes fadeInBranding {
-  0% { opacity: 0; transform: translateY(30px) scale(0.95); }
-  100% { opacity: 1; transform: translateY(0) scale(1); }
+.tech-line:nth-child(3) {
+  animation-delay: 0.6s;
+  width: 42px; /* Reduced from 50px */
 }
 
-@keyframes floatParticle {
-  0% { transform: translateY(0) scale(1); opacity: 0.8; }
-  50% { transform: translateY(-40px) scale(1.2); opacity: 1; }
-  100% { transform: translateY(0) scale(1); opacity: 0.8; }
+@keyframes pulse {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 1; }
 }
 
-/* --- Form --- */
+/* ============================================
+   Form Section (Right) - More Compact
+============================================ */
 .account-form {
-  flex-basis: 60%;
-  padding: 50px 40px;
-  background: #FFFFFF;
+  flex: 1;
+  padding: 30px 28px; /* Reduced */
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  position: relative;
 }
 
-.account-form h2 {
-  margin-bottom: 30px;
-  color: var(--text-dark);
-  font-size: 26px;
-  font-weight: 700;
+.form-header {
+  margin-bottom: 18px; /* Reduced */
 }
 
-/* --- Chuyển ngôn ngữ --- */
 .language-switcher {
   text-align: right;
-  margin-bottom: 10px;
+  margin-bottom: 16px; /* Reduced from 20px */
 }
 
 .language-switcher button {
-  background: none;
-  border: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(14, 165, 233, 0.1);
+  border: 1px solid rgba(14, 165, 233, 0.2);
+  padding: 6px 14px; /* Reduced from 8px 16px */
+  border-radius: 20px;
   cursor: pointer;
-  font-size: 14px;
+  transition: all 0.3s ease;
+  color: var(--primary-color);
   font-weight: 600;
-  color: var(--text-light);
-  padding: 5px;
-  transition: color 0.3s ease;
+  font-size: 13px; /* Reduced from 14px */
 }
 
 .language-switcher button:hover {
-  color: var(--primary-color);
+  background: rgba(14, 165, 233, 0.2);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(14, 165, 233, 0.2);
 }
 
-/* --- Form input --- */
+.language-switcher .icon {
+  width: 16px; /* Reduced from 18px */
+  height: 16px;
+}
+
+.lang-text {
+  font-size: 11px; /* Reduced from 12px */
+  font-weight: 700;
+}
+
+.form-header h2 {
+  font-size: 24px; /* Reduced */
+  font-weight: 700;
+  color: var(--text-dark);
+  margin-bottom: 5px; /* Reduced */
+}
+
+.form-subtitle {
+  color: var(--text-light);
+  font-size: 13px; /* Reduced */
+}
+
+/* Form Groups - More Compact */
 .form-group {
-  margin-bottom: 20px;
+  margin-bottom: 15px; /* Reduced */
 }
 
 .form-group label {
   display: block;
-  margin-bottom: 8px;
+  margin-bottom: 8px; /* Reduced from 10px */
   font-weight: 600;
-  color: var(--text-light);
-  font-size: 14px;
-}
-
-.form-group input {
-  width: 100%;
-  padding: 14px 18px;
-  border: 1px solid var(--border-color);
-  border-radius: 8px;
-  background: #fff;
   color: var(--text-dark);
-  font-size: 16px;
-  transition: all 0.3s ease;
+  font-size: 13px; /* Reduced from 14px */
 }
 
-.form-group input:focus {
-  outline: none;
-  border-color: var(--accent-color);
-  box-shadow: 0 0 0 3px rgba(37,99,235,0.15);
+.input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
 }
 
-/* --- Nút chính --- */
-.btn.btn-primary {
-  display: block;
+.input-icon {
+  position: absolute;
+  left: 14px; /* Reduced from 16px */
+  width: 18px; /* Reduced from 20px */
+  height: 18px;
+  color: var(--text-light);
+  pointer-events: none;
+  transition: color 0.3s ease;
+}
+
+.input-wrapper input {
   width: 100%;
-  padding: 16px 20px;
-  margin-top: 10px;
+  padding: 10px 12px 10px 46px; /* Extra left padding to avoid icon overlap */
+  border: 2px solid var(--border-color);
+  border-radius: 8px; /* Reduced */
+  font-size: 13px; /* Reduced */
+  color: var(--text-dark);
+  background: white;
+  transition: all 0.3s ease;
+  font-family: inherit;
+}
+
+.input-wrapper input:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(14, 165, 233, 0.1);
+}
+
+.input-wrapper input:focus + .input-icon,
+.input-wrapper:focus-within .input-icon {
+  color: var(--primary-color);
+}
+
+.input-wrapper input::placeholder {
+  color: var(--text-light);
+  opacity: 0.6;
+}
+
+/* Toggle Password */
+.toggle-password {
+  position: absolute;
+  right: 14px; /* Reduced from 16px */
+  background: none;
   border: none;
-  border-radius: 8px;
-  background: var(--primary-color);
+  cursor: pointer;
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-light);
+  transition: color 0.3s ease;
+}
+
+.toggle-password:hover {
+  color: var(--primary-color);
+}
+
+.eye-icon {
+  width: 18px; /* Reduced from 20px */
+  height: 18px;
+}
+
+/* Password Strength */
+.password-strength {
+  margin-top: 6px; /* Reduced from 8px */
+  display: flex;
+  align-items: center;
+  gap: 8px; /* Reduced from 10px */
+}
+
+.strength-bar {
+  flex: 1;
+  height: 3px; /* Reduced from 4px */
+  background: var(--border-color);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.strength-fill {
+  height: 100%;
+  width: 0%;
+  background: var(--primary-gradient);
+  border-radius: 2px;
+  transition: width 0.3s ease;
+}
+
+.strength-text {
+  font-size: 11px; /* Reduced from 12px */
+  color: var(--text-light);
+  font-weight: 600;
+}
+
+.checkbox-group {
+  margin: 18px 0;
+}
+
+.checkbox-label {
+  display: flex;
+  align-items: flex-start; /* Căn trên để text wrap tốt hơn */
+  gap: 12px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.checkbox-label input[type="checkbox"] {
+  /* Ẩn checkbox gốc hoàn toàn */
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+  pointer-events: none;
+}
+
+.checkbox-custom {
+  position: relative;
+  width: 20px;
+  height: 20px;
+  border: 2px solid var(--border-color);
+  border-radius: 5px;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.25s ease;
+  flex-shrink: 0;
+  margin-top: 2px; /* Căn với dòng text đầu tiên */
+}
+
+.checkbox-label input:checked + .checkbox-custom {
+  background: var(--primary-gradient);
+  border-color: var(--primary-color);
+}
+
+.checkbox-label input:checked + .checkbox-custom::after {
+  content: '✓';
   color: #fff;
-  font-size: 16px;
+  font-size: 12px;
   font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
+}
+
+.checkbox-text {
+  font-size: 14px;
+  color: var(--text-light);
+  line-height: 1.6;
+  flex: 1; /* Cho phép text wrap tự nhiên */
+}
+
+.checkbox-text a {
+  color: var(--primary-color);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.checkbox-text a:hover {
+  text-decoration: underline;
+}
+
+
+/* Primary Button - More Compact */
+.btn.btn-primary {
+  width: 100%;
+  padding: 12px 18px; /* Reduced */
+  background: var(--primary-gradient);
+  border: none;
+  border-radius: 8px; /* Reduced */
+  color: white;
+  font-size: 14px; /* Reduced */
+  font-weight: 700;
   cursor: pointer;
   transition: all 0.3s ease;
-  box-shadow: 0 4px 12px rgba(37,99,235,0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px; /* Reduced */
+  box-shadow: 0 4px 16px rgba(14, 165, 233, 0.3);
+  position: relative;
+  overflow: hidden;
+}
+
+.btn.btn-primary::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transform: translateX(-100%);
+  transition: transform 0.6s ease;
+}
+
+.btn.btn-primary:hover::before {
+  transform: translateX(100%);
 }
 
 .btn.btn-primary:hover {
-  background: var(--hover-color);
   transform: translateY(-2px);
-  box-shadow: 0 6px 16px rgba(37,99,235,0.35);
+  box-shadow: 0 8px 24px rgba(14, 165, 233, 0.4);
 }
 
-/* --- Footer --- */
+.btn.btn-primary:active {
+  transform: translateY(0);
+}
+
+.btn-arrow {
+  width: 18px; /* Reduced from 20px */
+  height: 18px;
+  transition: transform 0.3s ease;
+}
+
+.btn.btn-primary:hover .btn-arrow {
+  transform: translateX(4px);
+}
+
+/* Divider - More Compact */
+.divider {
+  position: relative;
+  text-align: center;
+  margin: 16px 0; /* Reduced */
+}
+
+.divider::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  height: 1px;
+  background: var(--border-color);
+}
+
+.divider span {
+  position: relative;
+  display: inline-block;
+  padding: 0 14px; /* Reduced from 16px */
+  background: rgba(255, 255, 255, 0.95);
+  color: var(--text-light);
+  font-size: 13px; /* Reduced from 14px */
+  font-weight: 600;
+}
+
+/* Social Login - More Compact */
+.social-login {
+  display: flex;
+  gap: 8px; /* Reduced */
+  margin-bottom: 16px; /* Reduced */
+}
+
+.btn-social {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px; /* Reduced */
+  padding: 8px 12px; /* Reduced */
+  border: 2px solid var(--border-color);
+  border-radius: 8px; /* Reduced */
+  background: white;
+  cursor: pointer;
+  font-size: 12px; /* Reduced */
+  font-weight: 600;
+  transition: all 0.3s ease;
+  color: var(--text-dark);
+}
+
+.btn-social svg {
+  width: 16px; /* Reduced */
+  height: 16px;
+}
+
+.btn-social:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+  border-color: transparent;
+}
+
+.btn-google:hover {
+  background: #f8f9fa;
+}
+
+.btn-facebook:hover {
+  background: #1877f2;
+  color: white;
+}
+
+.btn-facebook:hover path {
+  fill: white;
+}
+
+/* Form Footer - Compact */
 .form-footer {
   text-align: center;
-  margin-top: 25px;
+  padding-top: 16px; /* Reduced from 20px */
+  border-top: 1px solid var(--border-color);
+}
+
+.form-footer p {
   color: var(--text-light);
+  font-size: 13px; /* Reduced from 14px */
 }
 
 .form-footer a {
   color: var(--primary-color);
   text-decoration: none;
-  font-weight: 600;
+  font-weight: 700;
+  margin-left: 6px;
   transition: color 0.3s ease;
 }
 
 .form-footer a:hover {
+  color: var(--accent-color);
   text-decoration: underline;
 }
 
-/* --- Responsive --- */
-@media (max-width: 800px) {
+/* ============================================
+   Responsive Design
+============================================ */
+@media (max-width: 968px) {
   .account-card {
     flex-direction: column;
-    margin: 20px 0;
-  }
-
-  .account-branding, .account-form {
-    flex-basis: 100%;
-    padding: 40px 30px;
+    max-width: 440px;
   }
 
   .account-branding {
-    border-radius: 20px 20px 0 0;
+    flex: none;
+    padding: 30px 20px;
+  }
+
+  .account-form {
+    padding: 30px 20px;
+  }
+
+  .features-mini {
+    gap: 14px;
+  }
+
+  .feature-item svg {
+    width: 22px;
+    height: 22px;
+  }
+
+  .social-login {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 480px) {
+  .account-container {
+    padding: 20px 10px;
+  }
+
+  .account-card {
+    border-radius: 14px;
+  }
+
+  .account-branding,
+  .account-form {
+    padding: 22px 18px;
+  }
+
+  .form-header h2 {
+    font-size: 20px;
+  }
+
+  .welcome-text h1 {
+    font-size: 19px;
+  }
+
+  .features-mini {
+    gap: 10px;
+  }
+
+  .feature-item span {
+    font-size: 9px;
+  }
+  
+  .logo {
+    max-width: 100px;
   }
 }

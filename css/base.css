@@ -111,7 +111,9 @@ body.dark-mode {
 }
 
 /* ===============================================
-   BYTE NEST — CINEMATIC LOADING SEQUENCE
+   LOADING SCREEN — FIVE-BOX FLIP (Original Code)
+   - Converted from SCSS to pure CSS
+   - Scoped to #loading-screen
 =============================================== */
 
 #loading-screen {
@@ -124,65 +126,251 @@ body.dark-mode {
   overflow: hidden;
   z-index: 9999;
   transition: opacity 0.8s ease, transform 1s ease;
+
+  /* Variables */
+  --duration: 1.5s;
+  --container-size: 250px;
+  --box-size: 33px;
+  --box-border-radius: 15%;
 }
 
-/* --- Light sweep passing through --- */
-.light-sweep {
+/* Container */
+#loading-screen .loader {
+  width: var(--container-size);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+}
+
+/* Box base styles */
+#loading-screen .loader__box {
+  width: var(--box-size);
+  height: var(--box-size);
+  position: relative;
+  display: block;
+  transform-origin: -50% center;
+  border-radius: var(--box-border-radius);
+}
+
+#loading-screen .loader__box::after {
+  content: '';
+  width: 100%;
+  height: 100%;
   position: absolute;
   top: 0;
-  left: -50%;
-  width: 200%;
-  height: 100%;
-  background: linear-gradient(
-    120deg,
-    transparent 30%,
-    rgba(255, 255, 255, 0.08) 50%,
-    transparent 70%
-  );
-  transform: skewX(-20deg);
-  animation: sweep 3.2s ease-in-out infinite;
+  right: 0;
+  background-color: lightblue;
+  border-radius: var(--box-border-radius);
+  box-shadow: 
+    0px 0px 20px 4px rgba(28, 159, 255, 0.6),
+    0px 0px 40px 8px rgba(28, 159, 255, 0.4),
+    0px 0px 60px 12px rgba(28, 159, 255, 0.2),
+    inset 0px 0px 15px 2px rgba(255, 255, 255, 0.3);
+  filter: brightness(1.2);
 }
 
-/* --- Logo Reveal --- */
-.logo-reveal span {
-  font-size: 40px;
-  font-weight: 800;
-  color: #fff;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  opacity: 0;
-  transform: translateY(20px) scale(0.95);
-  animation: fadeUp 2s ease forwards 0.8s;
-  text-shadow: 0 0 30px rgba(99, 102, 241, 0.5);
+/* Box 1 - Slide */
+#loading-screen .loader__box:nth-child(1) {
+  animation: slide var(--duration) ease-in-out infinite alternate;
+}
+#loading-screen .loader__box:nth-child(1)::after {
+  animation: color-change var(--duration) ease-in-out infinite alternate;
 }
 
-/* --- Gentle ambient particles --- */
-#loading-screen::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background-image: radial-gradient(circle, rgba(255,255,255,0.08) 1px, transparent 1px);
-  background-size: 3px 3px;
-  opacity: 0.2;
-  animation: shimmer 6s linear infinite;
-  mix-blend-mode: overlay;
+/* Box 2 - Flip 1 */
+#loading-screen .loader__box:nth-child(2) {
+  animation: flip-1 var(--duration) ease-in-out infinite alternate;
+}
+#loading-screen .loader__box:nth-child(2)::after {
+  background-color: #1C9FFF;
+  animation: squidge-1 var(--duration) ease-in-out infinite alternate;
+  box-shadow: 
+    0px 0px 20px 4px rgba(28, 159, 255, 0.7),
+    0px 0px 40px 8px rgba(28, 159, 255, 0.5),
+    0px 0px 60px 12px rgba(28, 159, 255, 0.3),
+    inset 0px 0px 15px 2px rgba(255, 255, 255, 0.3);
 }
 
-/* --- Keyframes --- */
-@keyframes sweep {
-  0% { transform: translateX(-100%) skewX(-20deg); opacity: 0; }
-  50% { opacity: 1; }
-  100% { transform: translateX(100%) skewX(-20deg); opacity: 0; }
+/* Box 3 - Flip 2 */
+#loading-screen .loader__box:nth-child(3) {
+  animation: flip-2 var(--duration) ease-in-out infinite alternate;
+}
+#loading-screen .loader__box:nth-child(3)::after {
+  background-color: #1FB1FD;
+  animation: squidge-2 var(--duration) ease-in-out infinite alternate;
+  box-shadow: 
+    0px 0px 20px 4px rgba(31, 177, 253, 0.7),
+    0px 0px 40px 8px rgba(31, 177, 253, 0.5),
+    0px 0px 60px 12px rgba(31, 177, 253, 0.3),
+    inset 0px 0px 15px 2px rgba(255, 255, 255, 0.3);
 }
 
-@keyframes fadeUp {
-  to {
-    opacity: 1;
-    transform: translateY(0) scale(1);
+/* Box 4 - Flip 3 */
+#loading-screen .loader__box:nth-child(4) {
+  animation: flip-3 var(--duration) ease-in-out infinite alternate;
+}
+#loading-screen .loader__box:nth-child(4)::after {
+  background-color: #22C7FB;
+  animation: squidge-3 var(--duration) ease-in-out infinite alternate;
+  box-shadow: 
+    0px 0px 20px 4px rgba(34, 199, 251, 0.7),
+    0px 0px 40px 8px rgba(34, 199, 251, 0.5),
+    0px 0px 60px 12px rgba(34, 199, 251, 0.3),
+    inset 0px 0px 15px 2px rgba(255, 255, 255, 0.3);
+}
+
+/* Box 5 - Flip 4 */
+#loading-screen .loader__box:nth-child(5) {
+  animation: flip-4 var(--duration) ease-in-out infinite alternate;
+}
+#loading-screen .loader__box:nth-child(5)::after {
+  background-color: #23D3FB;
+  animation: squidge-4 var(--duration) ease-in-out infinite alternate;
+  box-shadow: 
+    0px 0px 20px 4px rgba(35, 211, 251, 0.7),
+    0px 0px 40px 8px rgba(35, 211, 251, 0.5),
+    0px 0px 60px 12px rgba(35, 211, 251, 0.3),
+    inset 0px 0px 15px 2px rgba(255, 255, 255, 0.3);
+}
+
+/* Keyframes - Slide */
+@keyframes slide {
+  0% { 
+    background-color: #1795FF; 
+    transform: translateX(0vw); 
+  }
+  100% { 
+    background-color: #23D3FB; 
+    transform: translateX(calc(var(--container-size) - (var(--box-size) * 1.25))); 
   }
 }
 
-@keyframes shimmer {
-  from { background-position: 0 0; }
-  to { background-position: 100px 100px; }
+@keyframes color-change {
+  0% { background-color: #1795FF; }
+  100% { background-color: #23D3FB; }
+}
+
+/* Keyframes - Flip animations ($i = 1 to 4) */
+@keyframes flip-1 {
+  0%, 15% { transform: rotate(0); }
+  35%, 100% { transform: rotate(-180deg); }
+}
+
+@keyframes flip-2 {
+  0%, 30% { transform: rotate(0); }
+  50%, 100% { transform: rotate(-180deg); }
+}
+
+@keyframes flip-3 {
+  0%, 45% { transform: rotate(0); }
+  65%, 100% { transform: rotate(-180deg); }
+}
+
+@keyframes flip-4 {
+  0%, 60% { transform: rotate(0); }
+  80%, 100% { transform: rotate(-180deg); }
+}
+
+/* Keyframes - Squidge animations ($i = 1 to 4) */
+@keyframes squidge-1 {
+  5% { transform-origin: center bottom; transform: scaleX(1) scaleY(1); }
+  15% { transform-origin: center bottom; transform: scaleX(1.3) scaleY(0.7); }
+  20%, 25% { transform-origin: center bottom; transform: scaleX(0.8) scaleY(1.4); }
+  40% { transform-origin: center top; transform: scaleX(1.3) scaleY(0.7); }
+  55%, 100% { transform-origin: center top; transform: scaleX(1) scaleY(1); }
+}
+
+@keyframes squidge-2 {
+  20% { transform-origin: center bottom; transform: scaleX(1) scaleY(1); }
+  30% { transform-origin: center bottom; transform: scaleX(1.3) scaleY(0.7); }
+  35%, 40% { transform-origin: center bottom; transform: scaleX(0.8) scaleY(1.4); }
+  55% { transform-origin: center top; transform: scaleX(1.3) scaleY(0.7); }
+  70%, 100% { transform-origin: center top; transform: scaleX(1) scaleY(1); }
+}
+
+@keyframes squidge-3 {
+  35% { transform-origin: center bottom; transform: scaleX(1) scaleY(1); }
+  45% { transform-origin: center bottom; transform: scaleX(1.3) scaleY(0.7); }
+  50%, 55% { transform-origin: center bottom; transform: scaleX(0.8) scaleY(1.4); }
+  70% { transform-origin: center top; transform: scaleX(1.3) scaleY(0.7); }
+  85%, 100% { transform-origin: center top; transform: scaleX(1) scaleY(1); }
+}
+
+@keyframes squidge-4 {
+  50% { transform-origin: center bottom; transform: scaleX(1) scaleY(1); }
+  60% { transform-origin: center bottom; transform: scaleX(1.3) scaleY(0.7); }
+  65%, 70% { transform-origin: center bottom; transform: scaleX(0.8) scaleY(1.4); }
+  85% { transform-origin: center top; transform: scaleX(1.3) scaleY(0.7); }
+  100% { transform-origin: center top; transform: scaleX(1) scaleY(1); }
+}
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  #loading-screen .loader__box,
+  #loading-screen .loader__box::after {
+    animation: none !important;
+  }
+}
+
+/* ===== LANGUAGE CHANGE ANIMATION ===== */
+[data-i18n], [data-i18n-placeholder], [data-i18n-title] {
+    transition: opacity 0.2s ease-in-out, transform 0.2s ease-in-out;
+}
+
+body.lang-transitioning [data-i18n] {
+    will-change: opacity, transform;
+}
+
+/* Smooth transition for text elements */
+.section-title h2,
+.section-title p,
+.featured-title,
+.featured-category,
+.featured-badge,
+.testimonial-text,
+.testimonial-author h4,
+.testimonial-author span,
+.hero-title,
+.hero-subtitle {
+    transition: opacity 0.2s ease-in-out, transform 0.2s ease-in-out;
+}
+
+/* Only animate text inside buttons, not the button itself */
+.btn-add-cart span[data-i18n],
+.btn-hero-primary span[data-i18n],
+.btn-hero-secondary span[data-i18n] {
+    display: inline-block;
+    transition: opacity 0.2s ease-in-out, transform 0.2s ease-in-out;
+}
+
+/* Add stagger animation for featured cards */
+.featured-card [data-i18n] {
+    transition-delay: calc(var(--card-index, 0) * 0.03s);
+}
+
+.featured-card:nth-child(1) [data-i18n] { --card-index: 0; }
+.featured-card:nth-child(2) [data-i18n] { --card-index: 1; }
+.featured-card:nth-child(3) [data-i18n] { --card-index: 2; }
+.featured-card:nth-child(4) [data-i18n] { --card-index: 3; }
+
+/* Add stagger for testimonial cards */
+.testimonial-card [data-i18n] {
+    transition-delay: calc(var(--testimonial-index, 0) * 0.04s);
+}
+
+.testimonial-card:nth-child(1) [data-i18n] { --testimonial-index: 0; }
+.testimonial-card:nth-child(2) [data-i18n] { --testimonial-index: 1; }
+.testimonial-card:nth-child(3) [data-i18n] { --testimonial-index: 2; }
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  #loading-screen .loader__box,
+  #loading-screen .loader__box::after {
+    animation: none !important;
+  }
+  
+  [data-i18n], [data-i18n-placeholder], [data-i18n-title] {
+    transition: none !important;
+  }
 }

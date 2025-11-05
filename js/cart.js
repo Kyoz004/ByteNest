@@ -8,15 +8,22 @@ function addToCart(event, productName, price) {
     document.getElementById('cartCount').textContent = cartCount;
 
     // Animation feedback
-    const btn = event.target;
-    const originalText = btn.textContent;
-    btn.textContent = '✓ Đã thêm';
-    btn.style.background = '#28a745';
+    const btn = event.target.closest('button'); // Lấy button chứa span
+    const btnText = btn.querySelector('span[data-i18n]'); // Lấy span chứa text
+    
+    if (btnText) {
+        const originalText = btnText.textContent;
+        const currentLang = I18N.currentLang || localStorage.getItem('lang') || 'vi';
+        
+        // Lấy text "✓ Đã thêm" hoặc "✓ Added" từ i18n
+        btnText.textContent = I18N.dict[currentLang]['notify.added'];
+        btn.style.background = '#28a745';
 
-    setTimeout(() => {
-        btn.textContent = originalText;
-        btn.style.background = '';
-    }, 1500);
+        setTimeout(() => {
+            btnText.textContent = originalText;
+            btn.style.background = '';
+        }, 1500);
+    }
 }
 
 function openCart() {

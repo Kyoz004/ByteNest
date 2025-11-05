@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PRODUCTS - ByteNest</title>
+    <title>Products - ByteNest</title>
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/pages/products.css">
     <script src="js/main.js" defer></script>
     <script src="js/cart.js" defer></script>
     <script src="js/theme.js" defer></script>
@@ -15,13 +16,16 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 </head>
 <body>
-    <!-- PHẦN NÀY GIỮ NGUYÊN -->
     <div id="loading-screen">
-        <div class="light-sweep"></div>
-        <div class="logo-reveal"><span>BYTENEST</span></div>
+        <div class="loader" role="status" aria-label="Loading">
+            <span class="loader__box"></span>
+            <span class="loader__box"></span>
+            <span class="loader__box"></span>
+            <span class="loader__box"></span>
+            <span class="loader__box"></span>
+        </div>
     </div>
 
-    <!-- PHẦN NÀY GIỮ NGUYÊN -->
     <button id="scrollTopBtn" title="Lên đầu trang">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
             <path d="M11.9999 10.8284L7.05019 15.7782L5.63599 14.364L11.9999 8L18.3639 14.364L16.9497 15.7782L11.9999 10.8284Z"></path>
@@ -40,14 +44,14 @@
                 <span>🎉 SALE OFF cho đơn hàng trên 1 triệu | Nhập mã: <strong>TOTHENESTTEC</strong> giảm thêm 20%</span>
                 <span>🎉 BUILD PC ĐỘC QUYỀN | Nhập mã: <strong>BUILDNEST</strong> giảm ngay 500K</span>
                 <span>🎉 DỊCH VỤ SỬA CHỮA | Nhập mã: <strong>FIXITFAST</strong> giảm 15% tổng hóa đơn</span>
-                <span>🎉 MUA KÈM GEAR (Phím, Chuột) | Nhập mã: <strong>GEARUP</strong> giảm 12%</span>
+                <span>🔥 Sản phẩm Chính hãng – Xuất VAT đầy đủ</span>
                 
                 <!-- 3. Bộ tin nhắn LẶP LẠI (copy y hệt để chạy liền mạch) -->
                 <span>🎉 FREESHIP cho đơn hàng trên 500K | Nhập mã: <strong>TECH2025</strong> giảm thêm 10%</span>
                 <span>🎉 SALE OFF cho đơn hàng trên 1 triệu | Nhập mã: <strong>TOTHENESTTEC</strong> giảm thêm 20%</span>
                 <span>🎉 BUILD PC ĐỘC QUYỀN | Nhập mã: <strong>BUILDNEST</strong> giảm ngay 500K</span>
                 <span>🎉 DỊCH VỤ SỬA CHỮA | Nhập mã: <strong>FIXITFAST</strong> giảm 15% tổng hóa đơn</span>
-                <span>🎉 MUA KÈM GEAR (Phím, Chuột) | Nhập mã: <strong>GEARUP</strong> giảm 12%</span>
+                <span>🔥 Sản phẩm Chính hãng – Xuất VAT đầy đủ</span>
             
             </div> <!-- Kết thúc .marquee-text -->
         </div> <!-- Kết thúc .promo-content -->
@@ -147,12 +151,12 @@
                         <path stroke-linecap="round" stroke-linejoin="round" d="M17.982 18.725A7.488 7.488 0 0012 15.75a7.488 7.488 0 00-5.982 2.975m11.963 0a9 9 0 10-11.963 0m11.963 0A8.966 8.966 0 0112 21a8.966 8.966 0 01-5.982-2.275M15 9.75a3 3 0 11-6 0 3 3 0 016 0z" />
                     </svg>
                 </a>
-                <button onclick="openCart()" title="Giỏ hàng">
+                <a href="cart.html" title="Giỏ hàng" style="position: relative;">
                     <svg class="icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c.51 0 .962-.343 1.087-.835l1.823-6.441a.75.75 0 00-.543-.922H5.821a.75.75 0 00-.722.534L3 14.25zM7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c.51 0 .962-.343 1.087-.835l1.823-6.441a.75.75 0 00-.543-.922H5.821a.75.75 0 00-.722.534L3 14.25zM7.5 14.25h11.218m-13.5 3a3 3 0 116 0 3 3 0 01-6 0z" />
                     </svg>
                     <span class="cart-badge" id="cartCount">0</span>
-                </button>
+                </a>
                 
                 <button class="mobile-menu-btn" onclick="toggleMobileMenu()" aria-expanded="false" aria-controls="mobileNav">
                     <svg class="icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
@@ -169,13 +173,184 @@
             <p>Khuyến mãi lớn - Giá tốt nhất thị trường</p>
         </div>
 
-        <div class="filters">
-            <button class="filter-btn active" onclick="filterProducts('all')">Tất cả</button>
-            <button class="filter-btn" onclick="filterProducts('sale')">Giảm giá</button>
-            <button class="filter-btn" onclick="filterProducts('import')">Hàng xách tay</button>
-            <button class="filter-btn" onclick="filterProducts('laptop')">Laptop</button>
-            <button class="filter-btn" onclick="filterProducts('keyboard')">Bàn phím</button>
-            <button class="filter-btn" onclick="filterProducts('mouse')">Chuột</button>
+        <!-- Search & Filter Section -->
+        <div class="search-filter-wrapper">
+            <!-- Search Bar -->
+            <div class="search-bar">
+                <i class="bi bi-search"></i>
+                <input 
+                    type="text" 
+                    id="searchInput" 
+                    placeholder="Tìm kiếm sản phẩm theo tên, thương hiệu..." 
+                    aria-label="Tìm kiếm sản phẩm"
+                >
+                <button id="clearSearch" class="clear-btn" aria-label="Xóa tìm kiếm" style="display: none;">
+                    <i class="bi bi-x-circle-fill"></i>
+                </button>
+            </div>
+
+            <!-- Quick Filters -->
+            <div class="quick-filters">
+                <button class="quick-filter-btn is-active" data-filter="all" aria-pressed="true">
+                    <i class="bi bi-grid"></i><span>Tất cả</span>
+                </button>
+                <button class="quick-filter-btn" data-filter="sale" aria-pressed="false">
+                    <i class="bi bi-tags"></i><span>Giảm giá</span>
+                </button>
+                <button class="quick-filter-btn" data-filter="new" aria-pressed="false">
+                    <i class="bi bi-stars"></i><span>Mới</span>
+                </button>
+                <button class="quick-filter-btn" data-filter="bestseller" aria-pressed="false">
+                    <i class="bi bi-fire"></i><span>Bán chạy</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Advanced Filters -->
+        <div class="advanced-filters">
+            <button class="filter-toggle" id="filterToggle">
+                <i class="bi bi-funnel"></i>
+                <span>Bộ lọc</span>
+                <i class="bi bi-chevron-down"></i>
+            </button>
+
+            <div class="filter-panel" id="filterPanel">
+                <div class="filter-row">
+                    <!-- Category Filter -->
+                    <div class="filter-group">
+                        <label class="filter-label">
+                            <i class="bi bi-box-seam"></i>
+                            Danh mục sản phẩm
+                        </label>
+                        <div class="filter-options">
+                            <button class="filter-option" data-category="laptop">
+                                <i class="bi bi-laptop"></i>Laptop
+                            </button>
+                            <button class="filter-option" data-category="keyboard">
+                                <i class="bi bi-keyboard"></i>Bàn phím
+                            </button>
+                            <button class="filter-option" data-category="mouse">
+                                <i class="bi bi-mouse"></i>Chuột
+                            </button>
+                            <button class="filter-option" data-category="component">
+                                <i class="bi bi-cpu"></i>Linh kiện PC
+                            </button>
+                            <button class="filter-option" data-category="monitor">
+                                <i class="bi bi-display"></i>Màn hình
+                            </button>
+                            <button class="filter-option" data-category="accessory">
+                                <i class="bi bi-headphones"></i>Phụ kiện
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Brand Filter -->
+                    <div class="filter-group">
+                        <label class="filter-label">
+                            <i class="bi bi-building"></i>
+                            Thương hiệu
+                        </label>
+                        <div class="filter-options">
+                            <button class="filter-option" data-brand="apple">
+                                <i class="bi bi-apple"></i>Apple
+                            </button>
+                            <button class="filter-option" data-brand="asus">
+                                <i class="bi bi-laptop"></i>ASUS
+                            </button>
+                            <button class="filter-option" data-brand="razer">
+                                <i class="bi bi-controller"></i>Razer
+                            </button>
+                            <button class="filter-option" data-brand="logitech">
+                                <i class="bi bi-mouse"></i>Logitech
+                            </button>
+                            <button class="filter-option" data-brand="corsair">
+                                <i class="bi bi-keyboard"></i>Corsair
+                            </button>
+                            <button class="filter-option" data-brand="lenovo">
+                                <i class="bi bi-laptop"></i>Lenovo
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Price Range Filter -->
+                    <div class="filter-group">
+                        <label class="filter-label">
+                            <i class="bi bi-cash-stack"></i>
+                            Khoảng giá
+                        </label>
+                        <div class="filter-options">
+                            <button class="filter-option" data-price="0-5">
+                                Dưới 5 triệu
+                            </button>
+                            <button class="filter-option" data-price="5-10">
+                                5 - 10 triệu
+                            </button>
+                            <button class="filter-option" data-price="10-20">
+                                10 - 20 triệu
+                            </button>
+                            <button class="filter-option" data-price="20-30">
+                                20 - 30 triệu
+                            </button>
+                            <button class="filter-option" data-price="30-50">
+                                30 - 50 triệu
+                            </button>
+                            <button class="filter-option" data-price="50+">
+                                Trên 50 triệu
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Sort Options -->
+                    <div class="filter-group">
+                        <label class="filter-label">
+                            <i class="bi bi-sort-down"></i>
+                            Sắp xếp theo
+                        </label>
+                        <div class="filter-options">
+                            <button class="filter-option" data-sort="popular">
+                                <i class="bi bi-star"></i>Phổ biến
+                            </button>
+                            <button class="filter-option" data-sort="newest">
+                                <i class="bi bi-clock"></i>Mới nhất
+                            </button>
+                            <button class="filter-option" data-sort="price-low">
+                                <i class="bi bi-arrow-up"></i>Giá thấp
+                            </button>
+                            <button class="filter-option" data-sort="price-high">
+                                <i class="bi bi-arrow-down"></i>Giá cao
+                            </button>
+                            <button class="filter-option" data-sort="discount">
+                                <i class="bi bi-percent"></i>% Giảm giá
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="filter-actions">
+                    <button class="btn-reset-filter" id="resetFilters">
+                        <i class="bi bi-arrow-counterclockwise"></i>
+                        Đặt lại
+                    </button>
+                    <button class="btn-apply-filter" id="applyFilters">
+                        <i class="bi bi-check2-circle"></i>
+                        Áp dụng
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Active Filters Display -->
+        <div class="active-filters" id="activeFilters" style="display: none;">
+            <span class="active-filters-label">Đang lọc:</span>
+            <div class="active-filter-tags" id="activeFilterTags"></div>
+            <button class="clear-all-filters" id="clearAllFilters">
+                <i class="bi bi-x"></i> Xóa tất cả
+            </button>
+        </div>
+
+        <!-- Results Count -->
+        <div class="results-info">
+            <span id="resultsCount">Hiển thị 24 sản phẩm</span>
         </div>
 
         <div class="product-grid" id="productGrid">
@@ -183,7 +358,7 @@
             <div class="product-card" data-category="laptop bestseller sale">
                 <span class="product-badge">-25%</span>
                 <div class="product-image-container">
-                    <img src="https://images.unsplash.com/photo-1593642632823-8f785ba67e45?w=400" alt="Laptop Gaming" class="product-image">
+                    <img src="https://laptopre.vn/upload/picture/picture-1687329394.png" alt="Laptop Gaming" class="product-image">
                 </div>
                 <div class="product-info">
                     <div class="product-category">Laptop Gaming</div>
@@ -211,10 +386,10 @@
                 </div>
             </div>
 
-            <div class="product-card" data-category="laptop import">
-                <span class="product-badge">Xách tay US</span>
+            <div class="product-card" data-category="laptop import apple bestseller">
+                <span class="product-badge import">Xách tay US</span>
                 <div class="product-image-container">
-                    <img src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=400" alt="MacBook Pro" class="product-image">
+                    <img src="https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/mbp14-spaceblack-select-202410_FMT_WHH?wid=892&hei=820&fmt=jpeg&qlt=90&.v=YnlWZDdpMFo0bUpJZnBpZjhKM2M3YnRLQTZRakorT3p3YTRUbVA0N3dnbm9kcmNoRkhVQjllNW44R3VXNVFLNm5EL1p1ZmpNaCtMcDhOa3lIZDhWbWhhU2ZYeWJNaHI5aXZSOWk3dEhoQkx6STlJSlZ4M0pKaFh6c2piamliR2k" alt="MacBook Pro" class="product-image">
                 </div>
                 <div class="product-info">
                     <div class="product-category">MacBook</div>
@@ -241,10 +416,10 @@
                 </div>
             </div>
 
-            <div class="product-card" data-category="keyboard bestseller">
-                <span class="product-badge">Hot</span>
+            <div class="product-card" data-category="keyboard bestseller gaming">
+                <span class="product-badge hot">Hot</span>
                 <div class="product-image-container">
-                    <img src="https://images.unsplash.com/photo-1595225476474-87563907a212?w=400" alt="Bàn phím cơ" class="product-image">
+                    <img src="https://bizweb.dktcdn.net/thumb/1024x1024/100/329/122/products/ban-phim-co-khong-day-keychron-q1-pro-silver-grey-rgb-knob-hotswap-keychron-k-pro-switch-1.jpg?v=1701770182343" alt="Bàn phím cơ" class="product-image">
                 </div>
                 <div class="product-info">
                     <div class="product-category">Bàn phím cơ</div>
@@ -271,9 +446,9 @@
                 </div>
             </div>
 
-            <div class="product-card" data-category="mouse bestseller">
+            <div class="product-card" data-category="mouse bestseller gaming">
                 <div class="product-image-container">
-                    <img src="https://images.unsplash.com/photo-1527864550417-7fd91fc51a46?w=400" alt="Chuột gaming" class="product-image">
+                    <img src="https://bizweb.dktcdn.net/thumb/grande/100/329/122/products/chuot-gaming-khong-day-logitech-g-pro-x-superlight-2-d9fa496b-1eb8-49e5-a9a1-4c275aa234a3.jpg?v=1741142613607" alt="Chuột gaming" class="product-image">
                 </div>
                 <div class="product-info">
                     <div class="product-category">Chuột Gaming</div>
@@ -303,7 +478,7 @@
             <div class="product-card" data-category="component sale">
                 <span class="product-badge">-15%</span>
                 <div class="product-image-container">
-                    <img src="https://images.unsplash.com/photo-1591799264318-7e6ef8ddb7ea?w=400" alt="RAM" class="product-image">
+                    <img src="https://bizweb.dktcdn.net/100/410/941/products/16gb-11ca76a0-7298-4eb5-8d84-ca121c20a1b2.jpg?v=1665366927540" alt="RAM" class="product-image">
                 </div>
                 <div class="product-info">
                     <div class="product-category">RAM</div>
@@ -333,7 +508,7 @@
 
             <div class="product-card" data-category="component">
                 <div class="product-image-container">
-                    <img src="https://images.unsplash.com/photo-1555617981-dac3880eac6e?w=400" alt="SSD" class="product-image">
+                    <img src="https://bizweb.dktcdn.net/thumb/1024x1024/100/329/122/products/ssd-samsung-990-pro-pcie-gen-4-0-x4-nvme-v-nand-m-2-2280-2tb-mz-v9p2t0bw-1.jpg?v=1661577087873" alt="SSD" class="product-image">
                 </div>
                 <div class="product-info">
                     <div class="product-category">SSD</div>
@@ -360,10 +535,10 @@
                 </div>
             </div>
 
-            <div class="product-card" data-category="apple bestseller">
-                <span class="product-badge">New</span>
+            <div class="product-card" data-category="apple bestseller accessory">
+                <span class="product-badge new">New</span>
                 <div class="product-image-container">
-                    <img src="https://images.unsplash.com/photo-1606841837239-c5a1a4a07af7?w=400" alt="AirPods" class="product-image">
+                    <img src="https://cdn2.cellphones.com.vn/insecure/rs:fill:0:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/a/i/airpods_pro_2_sep24_pdp_image_position_2__vn-vi.jpg" alt="AirPods" class="product-image">
                 </div>
                 <div class="product-info">
                     <div class="product-category">Apple</div>
@@ -392,7 +567,7 @@
 
             <div class="product-card" data-category="accessory">
                 <div class="product-image-container">
-                    <img src="https://images.unsplash.com/photo-1546435770-a3e426bf472b?w=400" alt="Tai nghe" class="product-image">
+                    <img src="https://cdn.shopify.com/s/files/1/0298/6259/2571/files/1_WH-1000XM5_standard_smokypink-Large_5962ba0f-1174-432b-8339-762283eec17e.jpg?v=1749539511" alt="Tai nghe" class="product-image">
                 </div>
                 <div class="product-info">
                     <div class="product-category">Tai nghe</div>
@@ -422,7 +597,7 @@
             <div class="product-card" data-category="laptop import sale">
                 <span class="product-badge">-20%</span>
                 <div class="product-image-container">
-                    <img src="https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?w=400" alt="Dell XPS" class="product-image">
+                    <img src="https://laptopxachtayshop.com/uploads/2023/09/Laptop-Dell-XPS-15-9530-scaled.jpg" alt="Dell XPS" class="product-image">
                 </div>
                 <div class="product-info">
                     <div class="product-category">Laptop</div>
@@ -453,7 +628,7 @@
             <div class="product-card" data-category="keyboard import">
                 <span class="product-badge">Xách tay JP</span>
                 <div class="product-image-container">
-                    <img src="https://images.unsplash.com/photo-1601445638532-3c6f6c3aa1d6?w=400" alt="HHKB" class="product-image">
+                    <img src="https://hhkeyboard.us/-/media/project/hhkeyboard/blog/2023/06/hhkb_type_s.jpg?mw=1200&hash=E8DC1ED17E1AEB16B38D79B88D591207" alt="HHKB" class="product-image">
                 </div>
                 <div class="product-info">
                     <div class="product-category">Bàn phím</div>
@@ -483,7 +658,7 @@
             <div class="product-card" data-category="component bestseller">
                 <span class="product-badge">Best Seller</span>
                 <div class="product-image-container">
-                    <img src="https://images.unsplash.com/photo-1587202372634-32705e3bf49c?w=400" alt="VGA" class="product-image">
+                    <img src="https://anphat.com.vn/media/product/47596_vga_msi_rtx_4070_ti_super_16gb_gaming_x_slim__2_.jpg" alt="VGA" class="product-image">
                 </div>
                 <div class="product-info">
                     <div class="product-category">VGA</div>
@@ -538,9 +713,343 @@
                     </div>
                 </div>
             </div>
+
+            <!-- NEW PRODUCTS BELOW -->
+            
+            <div class="product-card" data-category="laptop new sale">
+                <span class="product-badge new">New -30%</span>
+                <div class="product-image-container">
+                    <img src="https://images.unsplash.com/photo-1603302576837-37561b2e2302?w=400" alt="Lenovo Legion" class="product-image">
+                </div>
+                <div class="product-info">
+                    <div class="product-category">Laptop Gaming</div>
+                    <h3 class="product-title">Lenovo Legion 7i Gen 8 - RTX 4080</h3>
+                    <div class="product-rating">
+                        <span class="stars">⭐⭐⭐⭐⭐</span>
+                        <span>(98 đánh giá)</span>
+                    </div>
+                    <div class="product-price">
+                        <span class="price-current">52.900.000₫</span>
+                        <span class="price-old">75.900.000₫</span>
+                    </div>
+                    <div class="product-actions">
+                        <button class="btn-add-to-cart" onclick="addToCart('Lenovo Legion 7i', 52900000)">
+                            <i class="bi bi-cart-plus"></i>
+                            <span>Thêm vào giỏ</span>
+                        </button>
+                        <button class="btn-quick-view" title="Xem nhanh">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M2.036 12.322a1.012 1.012 0 010-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178z" />
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card" data-category="mouse new gaming">
+                <span class="product-badge new">New</span>
+                <div class="product-image-container">
+                    <img src="https://anphat.com.vn/media/product/48699_razer_viper_pro_v3_white__1_.jpg" alt="Razer Viper" class="product-image">
+                </div>
+                <div class="product-info">
+                    <div class="product-category">Chuột Gaming</div>
+                    <h3 class="product-title">Razer Viper V3 Pro - Wireless</h3>
+                    <div class="product-rating">
+                        <span class="stars">⭐⭐⭐⭐⭐</span>
+                        <span>(167 đánh giá)</span>
+                    </div>
+                    <div class="product-price">
+                        <span class="price-current">3.990.000₫</span>
+                    </div>
+                    <div class="product-actions">
+                        <button class="btn-add-to-cart" onclick="addToCart('Razer Viper V3 Pro', 3990000)">
+                            <i class="bi bi-cart-plus"></i>
+                            <span>Thêm vào giỏ</span>
+                        </button>
+                        <button class="btn-quick-view" title="Xem nhanh">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M2.036 12.322a1.012 1.012 0 010-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178z" />
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card" data-category="component">
+                <div class="product-image-container">
+                    <img src="https://product.hstatic.net/200000722513/product/1404_f1d990ecc8dca59fe99135dc8416e89d_9b05a1ef25f040b5979fa23c8ab80bc9_05323a308ac9405c87ad3906a4bba1d6.jpg" alt="CPU AMD" class="product-image">
+                </div>
+                <div class="product-info">
+                    <div class="product-category">CPU</div>
+                    <h3 class="product-title">AMD Ryzen 9 7950X3D - 16 Cores</h3>
+                    <div class="product-rating">
+                        <span class="stars">⭐⭐⭐⭐⭐</span>
+                        <span>(213 đánh giá)</span>
+                    </div>
+                    <div class="product-price">
+                        <span class="price-current">16.900.000₫</span>
+                    </div>
+                    <div class="product-actions">
+                        <button class="btn-add-to-cart" onclick="addToCart('AMD Ryzen 9 7950X3D', 16900000)">
+                            <i class="bi bi-cart-plus"></i>
+                            <span>Thêm vào giỏ</span>
+                        </button>
+                        <button class="btn-quick-view" title="Xem nhanh">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M2.036 12.322a1.012 1.012 0 010-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178z" />
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card" data-category="accessory sale">
+                <span class="product-badge">-18%</span>
+                <div class="product-image-container">
+                    <img src="https://product.hstatic.net/1000323386/product/logitech_brio_1_264f76d6301c4b099eb34e19624b1144.png" alt="Webcam" class="product-image">
+                </div>
+                <div class="product-info">
+                    <div class="product-category">Webcam</div>
+                    <h3 class="product-title">Logitech Brio 4K Pro Webcam</h3>
+                    <div class="product-rating">
+                        <span class="stars">⭐⭐⭐⭐⭐</span>
+                        <span>(189 đánh giá)</span>
+                    </div>
+                    <div class="product-price">
+                        <span class="price-current">4.490.000₫</span>
+                        <span class="price-old">5.490.000₫</span>
+                    </div>
+                    <div class="product-actions">
+                        <button class="btn-add-to-cart" onclick="addToCart('Logitech Brio 4K', 4490000)">
+                            <i class="bi bi-cart-plus"></i>
+                            <span>Thêm vào giỏ</span>
+                        </button>
+                        <button class="btn-quick-view" title="Xem nhanh">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M2.036 12.322a1.012 1.012 0 010-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178z" />
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card" data-category="accessory monitor new">
+                <span class="product-badge new">New</span>
+                <div class="product-image-container">
+                    <img src="https://product.hstatic.net/200000722513/product/man_hinh_lg_27gs95qe-b_ultragear_27_oled_2k_240hz_g-sync_gearvn_3ac245f9cfa243e580f561851ff8163c_master.jpg" alt="Monitor" class="product-image">
+                </div>
+                <div class="product-info">
+                    <div class="product-category">Màn hình</div>
+                    <h3 class="product-title">LG UltraGear 27" 240Hz OLED</h3>
+                    <div class="product-rating">
+                        <span class="stars">⭐⭐⭐⭐⭐</span>
+                        <span>(124 đánh giá)</span>
+                    </div>
+                    <div class="product-price">
+                        <span class="price-current">18.900.000₫</span>
+                    </div>
+                    <div class="product-actions">
+                        <button class="btn-add-to-cart" onclick="addToCart('LG UltraGear OLED', 18900000)">
+                            <i class="bi bi-cart-plus"></i>
+                            <span>Thêm vào giỏ</span>
+                        </button>
+                        <button class="btn-quick-view" title="Xem nhanh">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M2.036 12.322a1.012 1.012 0 010-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178z" />
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card" data-category="keyboard sale gaming">
+                <span class="product-badge hot">Hot -35%</span>
+                <div class="product-image-container">
+                    <img src="https://product.hstatic.net/1000233206/product/untitled-6_92f91b73574e458da35e88803ab6037a.png" alt="Corsair K70" class="product-image">
+                </div>
+                <div class="product-info">
+                    <div class="product-category">Bàn phím cơ</div>
+                    <h3 class="product-title">Corsair K70 RGB Pro - Cherry MX</h3>
+                    <div class="product-rating">
+                        <span class="stars">⭐⭐⭐⭐⭐</span>
+                        <span>(276 đánh giá)</span>
+                    </div>
+                    <div class="product-price">
+                        <span class="price-current">2.590.000₫</span>
+                        <span class="price-old">3.990.000₫</span>
+                    </div>
+                    <div class="product-actions">
+                        <button class="btn-add-to-cart" onclick="addToCart('Corsair K70 RGB', 2590000)">
+                            <i class="bi bi-cart-plus"></i>
+                            <span>Thêm vào giỏ</span>
+                        </button>
+                        <button class="btn-quick-view" title="Xem nhanh">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M2.036 12.322a1.012 1.012 0 010-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178z" />
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card" data-category="component new">
+                <span class="product-badge new">New</span>
+                <div class="product-image-container">
+                    <img src="https://dlcdnwebimgs.asus.com/files/media/E8F9316B-CB25-42B5-9422-CA99338CDB38/v1/img/spec/connectivity.png" alt="Motherboard" class="product-image">
+                </div>
+                <div class="product-info">
+                    <div class="product-category">Mainboard</div>
+                    <h3 class="product-title">ASUS ROG Strix Z790-E WiFi</h3>
+                    <div class="product-rating">
+                        <span class="stars">⭐⭐⭐⭐⭐</span>
+                        <span>(87 đánh giá)</span>
+                    </div>
+                    <div class="product-price">
+                        <span class="price-current">12.990.000₫</span>
+                    </div>
+                    <div class="product-actions">
+                        <button class="btn-add-to-cart" onclick="addToCart('ASUS ROG Z790-E', 12990000)">
+                            <i class="bi bi-cart-plus"></i>
+                            <span>Thêm vào giỏ</span>
+                        </button>
+                        <button class="btn-quick-view" title="Xem nhanh">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M2.036 12.322a1.012 1.012 0 010-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178z" />
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card" data-category="laptop new">
+                <span class="product-badge import">Xách tay US</span>
+                <div class="product-image-container">
+                    <img src="https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=400" alt="MacBook Air" class="product-image">
+                </div>
+                <div class="product-info">
+                    <div class="product-category">MacBook</div>
+                    <h3 class="product-title">MacBook Air 15" M3 (2024)</h3>
+                    <div class="product-rating">
+                        <span class="stars">⭐⭐⭐⭐⭐</span>
+                        <span>(342 đánh giá)</span>
+                    </div>
+                    <div class="product-price">
+                        <span class="price-current">32.900.000₫</span>
+                    </div>
+                    <div class="product-actions">
+                        <button class="btn-add-to-cart" onclick="addToCart('MacBook Air 15 M3', 32900000)">
+                            <i class="bi bi-cart-plus"></i>
+                            <span>Thêm vào giỏ</span>
+                        </button>
+                        <button class="btn-quick-view" title="Xem nhanh">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M2.036 12.322a1.012 1.012 0 010-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178z" />
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card" data-category="component sale">
+                <span class="product-badge">-22%</span>
+                <div class="product-image-container">
+                    <img src="https://product.hstatic.net/1000333506/product/ban-phim-co-corsair-k70-pro-blk-rgb__1__ada52c4fcb8844d5826b61a84ef577bc_medium.png" alt="PSU" class="product-image">
+                </div>
+                <div class="product-info">
+                    <div class="product-category">Nguồn máy tính</div>
+                    <h3 class="product-title">Corsair RM1000x 1000W 80+ Gold</h3>
+                    <div class="product-rating">
+                        <span class="stars">⭐⭐⭐⭐⭐</span>
+                        <span>(198 đánh giá)</span>
+                    </div>
+                    <div class="product-price">
+                        <span class="price-current">4.690.000₫</span>
+                        <span class="price-old">6.000.000₫</span>
+                    </div>
+                    <div class="product-actions">
+                        <button class="btn-add-to-cart" onclick="addToCart('Corsair RM1000x', 4690000)">
+                            <i class="bi bi-cart-plus"></i>
+                            <span>Thêm vào giỏ</span>
+                        </button>
+                        <button class="btn-quick-view" title="Xem nhanh">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M2.036 12.322a1.012 1.012 0 010-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178z" />
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card" data-category="accessory gaming">
+                <div class="product-image-container">
+                    <img src="https://images.unsplash.com/photo-1612198188060-c7c2a3b66eae?w=400" alt="Mousepad" class="product-image">
+                </div>
+                <div class="product-info">
+                    <div class="product-category">Phụ kiện Gaming</div>
+                    <h3 class="product-title">SteelSeries QcK Heavy XXL</h3>
+                    <div class="product-rating">
+                        <span class="stars">⭐⭐⭐⭐⭐</span>
+                        <span>(423 đánh giá)</span>
+                    </div>
+                    <div class="product-price">
+                        <span class="price-current">890.000₫</span>
+                    </div>
+                    <div class="product-actions">
+                        <button class="btn-add-to-cart" onclick="addToCart('SteelSeries QcK', 890000)">
+                            <i class="bi bi-cart-plus"></i>
+                            <span>Thêm vào giỏ</span>
+                        </button>
+                        <button class="btn-quick-view" title="Xem nhanh">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M2.036 12.322a1.012 1.012 0 010-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178z" />
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card" data-category="mouse new gaming">
+                <span class="product-badge new">New</span>
+                <div class="product-image-container">
+                    <img src="https://images.unsplash.com/photo-1527864550417-7fd91fc51a46?w=400" alt="SteelSeries" class="product-image">
+                </div>
+                <div class="product-info">
+                    <div class="product-category">Chuột Gaming</div>
+                    <h3 class="product-title">SteelSeries Aerox 9 Wireless</h3>
+                    <div class="product-rating">
+                        <span class="stars">⭐⭐⭐⭐⭐</span>
+                        <span>(134 đánh giá)</span>
+                    </div>
+                    <div class="product-price">
+                        <span class="price-current">3.290.000₫</span>
+                    </div>
+                    <div class="product-actions">
+                        <button class="btn-add-to-cart" onclick="addToCart('SteelSeries Aerox 9', 3290000)">
+                            <i class="bi bi-cart-plus"></i>
+                            <span>Thêm vào giỏ</span>
+                        </button>
+                        <button class="btn-quick-view" title="Xem nhanh">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M2.036 12.322a1.012 1.012 0 010-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178z" />
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
             
         </div>
-        </div>
+    </div>
 
     <footer>
         <div class="footer-grid">

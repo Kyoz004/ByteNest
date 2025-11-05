@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SOLUTIONS - ByteNest</title>
+    <title>Solutions - ByteNest</title>
     <link rel="stylesheet" href="css/style.css">
     <script src="js/main.js" defer></script>
     <script src="js/cart.js" defer></script>
@@ -14,13 +14,16 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 </head>
 <body>
-    <!-- PHẦN NÀY GIỮ NGUYÊN -->
     <div id="loading-screen">
-        <div class="light-sweep"></div>
-        <div class="logo-reveal"><span>BYTENEST</span></div>
+        <div class="loader" role="status" aria-label="Loading">
+            <span class="loader__box"></span>
+            <span class="loader__box"></span>
+            <span class="loader__box"></span>
+            <span class="loader__box"></span>
+            <span class="loader__box"></span>
+        </div>
     </div>
 
-    <!-- PHẦN NÀY GIỮ NGUYÊN -->
     <button id="scrollTopBtn" title="Lên đầu trang">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
             <path d="M11.9999 10.8284L7.05019 15.7782L5.63599 14.364L11.9999 8L18.3639 14.364L16.9497 15.7782L11.9999 10.8284Z"></path>
@@ -39,14 +42,14 @@
                 <span>🎉 SALE OFF cho đơn hàng trên 1 triệu | Nhập mã: <strong>TOTHENESTTEC</strong> giảm thêm 20%</span>
                 <span>🎉 BUILD PC ĐỘC QUYỀN | Nhập mã: <strong>BUILDNEST</strong> giảm ngay 500K</span>
                 <span>🎉 DỊCH VỤ SỬA CHỮA | Nhập mã: <strong>FIXITFAST</strong> giảm 15% tổng hóa đơn</span>
-                <span>🎉 MUA KÈM GEAR (Phím, Chuột) | Nhập mã: <strong>GEARUP</strong> giảm 12%</span>
+                <span>🔥 Sản phẩm Chính hãng – Xuất VAT đầy đủ</span>
                 
                 <!-- 3. Bộ tin nhắn LẶP LẠI (copy y hệt để chạy liền mạch) -->
                 <span>🎉 FREESHIP cho đơn hàng trên 500K | Nhập mã: <strong>TECH2025</strong> giảm thêm 10%</span>
                 <span>🎉 SALE OFF cho đơn hàng trên 1 triệu | Nhập mã: <strong>TOTHENESTTEC</strong> giảm thêm 20%</span>
                 <span>🎉 BUILD PC ĐỘC QUYỀN | Nhập mã: <strong>BUILDNEST</strong> giảm ngay 500K</span>
                 <span>🎉 DỊCH VỤ SỬA CHỮA | Nhập mã: <strong>FIXITFAST</strong> giảm 15% tổng hóa đơn</span>
-                <span>🎉 MUA KÈM GEAR (Phím, Chuột) | Nhập mã: <strong>GEARUP</strong> giảm 12%</span>
+                <span>🔥 Sản phẩm Chính hãng – Xuất VAT đầy đủ</span>
             
             </div> <!-- Kết thúc .marquee-text -->
         </div> <!-- Kết thúc .promo-content -->
@@ -146,12 +149,12 @@
                         <path stroke-linecap="round" stroke-linejoin="round" d="M17.982 18.725A7.488 7.488 0 0012 15.75a7.488 7.488 0 00-5.982 2.975m11.963 0a9 9 0 10-11.963 0m11.963 0A8.966 8.966 0 0112 21a8.966 8.966 0 01-5.982-2.275M15 9.75a3 3 0 11-6 0 3 3 0 016 0z" />
                     </svg>
                 </a>
-                <button onclick="openCart()" title="Giỏ hàng">
+                <a href="cart.html" title="Giỏ hàng" style="position: relative;">
                     <svg class="icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c.51 0 .962-.343 1.087-.835l1.823-6.441a.75.75 0 00-.543-.922H5.821a.75.75 0 00-.722.534L3 14.25zM7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c.51 0 .962-.343 1.087-.835l1.823-6.441a.75.75 0 00-.543-.922H5.821a.75.75 0 00-.722.534L3 14.25zM7.5 14.25h11.218m-13.5 3a3 3 0 116 0 3 3 0 01-6 0z" />
                     </svg>
                     <span class="cart-badge" id="cartCount">0</span>
-                </button>
+                </a>
                 
                 <button class="mobile-menu-btn" onclick="toggleMobileMenu()" aria-expanded="false" aria-controls="mobileNav">
                     <svg class="icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
@@ -170,19 +173,19 @@
 
         <div class="banners-grid">
             
-            <div class="banner-card">
+            <div class="banner-card" data-bg="assets/banner_card_img/bci3.jpg">
                 <h3><i class="bi bi-building"></i> Giải pháp Doanh nghiệp</h3>
                 <p>Setup trọn gói văn phòng, hệ thống mạng, bảo mật, và cung cấp thiết bị IT đồng bộ. Dịch vụ bảo trì 24/7.</p>
                 <a href="contact.html" class="btn btn-secondary">Nhận báo giá</a>
             </div>
 
-            <div class="banner-card">
+            <div class="banner-card" data-bg="assets/banner_card_img/bci2.jpg">
                 <h3><i class="bi bi-palette"></i> Giải pháp Sáng tạo</h3>
                 <p>Cung cấp máy trạm (Workstation) cấu hình cao, màn hình đồ họa chuyên dụng, và các thiết bị thu âm/quay phim.</p>
                 <a href="products.html" class="btn btn-secondary">Xem thiết bị</a>
             </div>
 
-            <div class="banner-card">
+            <div class="banner-card" data-bg="assets/banner_card_img/bci1.jpg">
                 <h3><i class="bi bi-controller"></i> Giải pháp Gaming Tối thượng</h3>
                 <p>Tư vấn và build PC custom theo ngân sách. Tối ưu hiệu năng cho gaming và streaming. Phụ kiện (gear) cao cấp.</p>
                 <a href="services.html" class="btn btn-secondary">Build PC ngay</a>
@@ -280,5 +283,27 @@
             </ul>
         </nav>
     </div>
+
+    <script>
+        // Set background images from data-bg attributes
+        document.addEventListener('DOMContentLoaded', function() {
+            const bannerCards = document.querySelectorAll('.banner-card[data-bg]');
+            bannerCards.forEach(card => {
+                const bgUrl = card.getAttribute('data-bg');
+                if (bgUrl) {
+                    // Create style element for the ::before pseudo-element
+                    const style = document.createElement('style');
+                    const cardIndex = Array.from(card.parentElement.children).indexOf(card) + 1;
+                    style.textContent = `
+                        .banner-card:nth-child(${cardIndex})::before {
+                            background-image: url('${bgUrl}');
+                            ${cardIndex === 1 ? 'background-position: center 30%;' : ''}
+                        }
+                    `;
+                    document.head.appendChild(style);
+                }
+            });
+        });
+    </script>
 </body>
 </html>
