@@ -190,6 +190,21 @@ document.addEventListener('DOMContentLoaded', () => {
 
     productCards.forEach(card => observer.observe(card));
 
+    // ======================= LIMIT CARD INTERACTIONS =======================
+    // Allow only two actions inside product card to be clickable:
+    // 1) .btn-add-to-cart and 2) .btn-quick-view. Any other click on the card
+    // surface does nothing to avoid unintended filter resets.
+    productCards.forEach(card => {
+        card.addEventListener('click', (e) => {
+            const allowed = e.target.closest?.('.btn-add-to-cart, .btn-quick-view');
+            if (!allowed) {
+                e.preventDefault?.();
+                e.stopPropagation?.();
+                return false;
+            }
+        }, true); // capture phase to block early
+    });
+
     // ======================= SEARCH BAR =======================
     const searchInput = document.getElementById('searchInput');
     const clearSearch = document.getElementById('clearSearch');
@@ -235,6 +250,54 @@ document.addEventListener('DOMContentLoaded', () => {
             filterToggle.classList.toggle('active');
         });
     }
+
+    // ======================= INIT FROM URL (READ FILTERS) =======================
+    // Support links like products.html?category=laptop or ?search=macbook
+    (function initFiltersFromURL() {
+        const params = new URLSearchParams(window.location.search);
+        let didInit = false;
+
+        // Preselect category from query
+        const urlCategory = params.get('category');
+        if (urlCategory) {
+            const catBtn = document.querySelector(`[data-category="${urlCategory}"]`);
+            if (catBtn) {
+                catBtn.classList.add('active');
+                if (!activeFilters.categories.includes(urlCategory)) {
+                    activeFilters.categories.push(urlCategory);
+                }
+                didInit = true;
+            }
+        }
+
+        // Preselect quick filter from query (?filter=sale|new|bestseller|all)
+        const quick = params.get('filter');
+        if (quick) {
+            const quickBtns = document.querySelectorAll('.quick-filter-btn');
+            quickBtns.forEach(b => {
+                const isActive = b.dataset.filter === quick;
+                b.classList.toggle('is-active', isActive);
+                b.setAttribute('aria-pressed', isActive ? 'true' : 'false');
+            });
+            activeFilters.quick = quick;
+            didInit = true;
+        }
+
+        // Pre-fill search from query (?search=...)
+        const search = params.get('search');
+        const searchInput = document.getElementById('searchInput');
+        const clearSearch = document.getElementById('clearSearch');
+        if (search && searchInput) {
+            searchInput.value = search;
+            activeFilters.search = search.toLowerCase();
+            if (clearSearch) clearSearch.style.display = 'block';
+            didInit = true;
+        }
+
+        if (didInit) {
+            applyAllFilters();
+        }
+    })();
 
     // ======================= CATEGORY FILTERS =======================
     const categoryFilters = document.querySelectorAll('[data-category]');
@@ -350,6 +413,8 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // Note: Removed behavior that reset filters on product-card click per request.
+
     // ======================= ADD TO CART =======================
     const addToCartButtons = document.querySelectorAll('.btn-add-to-cart');
     addToCartButtons.forEach(button => {
@@ -370,6 +435,27 @@ document.addEventListener('DOMContentLoaded', () => {
                 this.style.background = '';
                 ripple.remove();
             }, 1500);
+        });
+    });
+
+    // ======================= QUICK VIEW -> PRODUCT PAGE =======================
+    // Navigate to product.html with details extracted from the card
+    const quickViewButtons = document.querySelectorAll('.btn-quick-view');
+    quickViewButtons.forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            e.preventDefault();
+            const card = btn.closest('.product-card');
+            if (!card) return;
+            const title = card.querySelector('.product-title')?.textContent.trim() || '';
+            const price = card.querySelector('.price-current')?.textContent.trim() || '';
+            const old = card.querySelector('.price-old')?.textContent.trim() || '';
+            const image = card.querySelector('.product-image')?.src || '';
+            const category = card.querySelector('.product-category')?.textContent.trim() || '';
+            const badge = card.querySelector('.product-badge')?.textContent.trim() || '';
+            const rating = card.querySelector('.product-rating .stars')?.textContent.trim() || '';
+
+            const params = new URLSearchParams({ title, price, old, image, category, badge, rating });
+            window.location.href = `product.html?${params.toString()}`;
         });
     });
 });
