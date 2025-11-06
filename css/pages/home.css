@@ -314,9 +314,12 @@
 @media (max-width: 768px) {
     /* Make the hero adapt to viewport height on tablets/phones while removing large fixed max heights */
     .hero {
-        height: 100vh;
+        height: 100svh; /* fix mobile 100vh issues */
         min-height: 560px;
         max-height: none;
+    }
+    @supports (height: 100dvh) {
+        .hero { height: 100dvh; }
     }
 
     .hero-title {
@@ -353,29 +356,26 @@
         height: 1px;
     }
 
-    .slider-controls {
-        bottom: 20px;
-        right: 20px;
-        z-index: 12;
-    }
+    .slider-controls { bottom: 16px; right: 16px; z-index: 12; }
 
     .slider-btn {
         width: 48px;
         height: 48px;
     }
 
-    .slider-dots {
-        bottom: 20px;
-    }
+    .slider-dots { bottom: 16px; }
 }
 
 /* Small phones: tighten spacing, reduce font sizes, make controls more touch-friendly */
 @media (max-width: 480px) {
     .hero {
-        height: 100vh;
+        height: 100svh;
         min-height: 520px;
-        padding-top: 18px;
-        padding-bottom: 56px;
+        padding-top: 0;
+        padding-bottom: 0; /* remove extra white gap under banner */
+    }
+    @supports (height: 100dvh) {
+        .hero { height: 100dvh; }
     }
 
     .hero-content {
@@ -434,11 +434,7 @@
         justify-content: center;
     }
 
-    .slider-controls {
-        bottom: 14px;
-        right: 14px;
-        gap: 10px;
-    }
+    .slider-controls { bottom: 14px; right: 14px; gap: 10px; }
 
     .slider-btn {
         width: 44px;
