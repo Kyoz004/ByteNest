@@ -113,6 +113,32 @@ document.addEventListener('DOMContentLoaded', () => {
     // SỬA LỖI 1: Bỏ class ".header-main"
     const header = document.querySelector('header'); 
 
+    // Helper: update CSS vars for viewport and top bars to keep hero centered on iPhone
+    const docEl = document.documentElement;
+    function setViewportUnitVar() {
+        // Prefer 100dvh if supported on this browser, else fallback to 100svh
+        try {
+            if (CSS && typeof CSS.supports === 'function' && CSS.supports('height: 100dvh')) {
+                docEl.style.setProperty('--hero-vh', '100dvh');
+            } else {
+                docEl.style.setProperty('--hero-vh', '100svh');
+            }
+        } catch (_) {
+            docEl.style.setProperty('--hero-vh', '100svh');
+        }
+    }
+
+    function updateTopBarsVars() {
+        const promoH = (promoBar && !promoBar.classList.contains('hidden')) ? promoBar.clientHeight : 0;
+        const headerH = header ? header.offsetHeight : 0;
+        const total = promoH + headerH;
+        docEl.style.setProperty('--promo-height', `${promoH}px`);
+        docEl.style.setProperty('--header-height', `${headerH}px`);
+        docEl.style.setProperty('--top-bars-height', `${total}px`);
+    }
+
+    setViewportUnitVar();
+
     // Xử lý khi bấm nút đóng
     if (promoBar && closePromoBtn) {
         closePromoBtn.addEventListener('click', () => {
@@ -120,6 +146,8 @@ document.addEventListener('DOMContentLoaded', () => {
             if (header) {
                 header.style.top = '0';
             }
+            // When promo closes, recompute heights
+            setTimeout(updateTopBarsVars, 0);
         });
     }
 
@@ -131,6 +159,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 // Luôn đặt 'top' của header bằng chiều cao của promo-bar
                 // Khi promo-bar bị ẩn (height=0), top sẽ là '0px'
                 header.style.top = `${height}px`;
+                updateTopBarsVars();
             }
         });
         
@@ -143,6 +172,8 @@ document.addEventListener('DOMContentLoaded', () => {
         if (initialHeight > 0) {
             header.style.top = `${initialHeight}px`;
         }
+        // Also compute CSS vars initially
+        updateTopBarsVars();
     }
 
     // --- LOGIC 2: SCROLL-TO-TOP BUTTON ---
@@ -168,6 +199,42 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 });
+
+// Keep CSS vars updated on window resize and orientation changes
+(function(){
+    const docEl = document.documentElement;
+    function setViewportUnitVar() {
+        try {
+            if (CSS && typeof CSS.supports === 'function' && CSS.supports('height: 100dvh')) {
+                docEl.style.setProperty('--hero-vh', '100dvh');
+            } else {
+                docEl.style.setProperty('--hero-vh', '100svh');
+            }
+        } catch (_) {
+            docEl.style.setProperty('--hero-vh', '100svh');
+        }
+    }
+    function updateTopBarsVars() {
+        const promoBar = document.querySelector('.promo-bar');
+        const header = document.querySelector('header');
+        const promoH = (promoBar && !promoBar.classList.contains('hidden')) ? promoBar.clientHeight : 0;
+        const headerH = header ? header.offsetHeight : 0;
+        const total = promoH + headerH;
+        docEl.style.setProperty('--promo-height', `${promoH}px`);
+        docEl.style.setProperty('--header-height', `${headerH}px`);
+        docEl.style.setProperty('--top-bars-height', `${total}px`);
+    }
+    let _t;
+    function onResize(){
+        clearTimeout(_t);
+        _t = setTimeout(() => {
+            setViewportUnitVar();
+            updateTopBarsVars();
+        }, 50);
+    }
+    window.addEventListener('resize', onResize);
+    window.addEventListener('orientationchange', onResize);
+})();
 
 // ======================= SMOOTH SCROLL (Để bên ngoài) =======================
 // (Code này nên chạy sau DOMContentLoaded, nhưng để riêng cũng không sao)

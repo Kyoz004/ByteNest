@@ -314,12 +314,13 @@
 @media (max-width: 768px) {
     /* Make the hero adapt to viewport height on tablets/phones while removing large fixed max heights */
     .hero {
-        height: 100svh; /* fix mobile 100vh issues */
+        /* Visual full-height minus header + promo bar on mobile */
+        height: calc(var(--hero-vh, 100svh) - var(--top-bars-height, 0px));
         min-height: 560px;
         max-height: none;
     }
     @supports (height: 100dvh) {
-        .hero { height: 100dvh; }
+        .hero { height: calc(100dvh - var(--top-bars-height, 0px)); }
     }
 
     .hero-title {
@@ -369,17 +370,17 @@
 /* Small phones: tighten spacing, reduce font sizes, make controls more touch-friendly */
 @media (max-width: 480px) {
     .hero {
-        height: 100svh;
+        height: calc(var(--hero-vh, 100svh) - var(--top-bars-height, 0px));
         min-height: 520px;
         padding-top: 0;
         padding-bottom: 0; /* remove extra white gap under banner */
     }
     @supports (height: 100dvh) {
-        .hero { height: 100dvh; }
+        .hero { height: calc(100dvh - var(--top-bars-height, 0px)); }
     }
 
     .hero-content {
-        padding: 0 14px;
+        padding: calc(env(safe-area-inset-top, 0px) / 2) 14px calc(env(safe-area-inset-bottom, 0px) + 8px);
     }
 
     .hero-badge {
