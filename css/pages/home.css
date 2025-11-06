@@ -401,7 +401,7 @@
 
     .cta-buttons {
         gap: 0.5rem;
-        margin-bottom: 1.6rem;
+        margin-bottom: 1.3rem; /* bring dots a bit closer without overlap */
     }
 
     .btn-hero-primary,
@@ -409,8 +409,10 @@
         padding: 12px 18px;
         font-size: 0.95rem;
         border-radius: 40px;
-        width: calc(100% - 28px);
-        max-width: none;
+        width: 100%;              /* allow responsive width */
+        max-width: 340px;         /* keep CTA from stretching edge-to-edge */
+        margin-left: auto;        /* ensure centered */
+        margin-right: auto;       /* ensure centered */
     }
 
     .btn-hero-primary { box-shadow: 0 8px 24px rgba(255,255,255,0.12); }
