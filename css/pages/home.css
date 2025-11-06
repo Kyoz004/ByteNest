@@ -356,14 +356,14 @@
         height: 1px;
     }
 
-    .slider-controls { bottom: 16px; right: 16px; z-index: 12; }
+    .slider-controls { bottom: calc(env(safe-area-inset-bottom, 0px) + 16px); right: 16px; z-index: 12; }
 
     .slider-btn {
         width: 48px;
         height: 48px;
     }
 
-    .slider-dots { bottom: 16px; }
+    .slider-dots { bottom: calc(env(safe-area-inset-bottom, 0px) + 16px); }
 }
 
 /* Small phones: tighten spacing, reduce font sizes, make controls more touch-friendly */
@@ -434,7 +434,7 @@
         justify-content: center;
     }
 
-    .slider-controls { bottom: 14px; right: 14px; gap: 10px; }
+    .slider-controls { bottom: calc(env(safe-area-inset-bottom, 0px) + 14px); right: 14px; gap: 10px; }
 
     .slider-btn {
         width: 44px;
@@ -442,7 +442,7 @@
     }
 
     .slider-dots {
-        bottom: 14px;
+        bottom: calc(env(safe-area-inset-bottom, 0px) + 14px);
         gap: 8px;
     }
 
