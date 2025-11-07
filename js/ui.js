@@ -198,6 +198,97 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
     }
+
+    // --- LOGIC 3: CHATBOT (add on all pages except account-related) ---
+    (function initChatbot(){
+        const isAccount = /account/i.test(window.location.pathname);
+        if (isAccount) return; // exclude account page
+
+        // Build floating FAB near scroll-to-top button
+        const btn = document.createElement('button');
+        btn.className = 'chatbot-fab';
+        btn.type = 'button';
+        btn.title = 'Hỗ trợ khách hàng';
+        btn.setAttribute('aria-controls', 'chatbotWidget');
+        btn.setAttribute('aria-expanded', 'false');
+        btn.innerHTML = `
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M2.5 12c0-3.59 3.02-6.5 6.75-6.5h5.5C18.48 5.5 21.5 8.41 21.5 12s-3.02 6.5-6.75 6.5H13l-3.25 2.75V18.5H9.25C5.52 18.5 2.5 15.59 2.5 12z" />
+                <path stroke-linecap="round" stroke-linejoin="round" d="M9 12h.01M12 12h.01M15 12h.01" />
+            </svg>
+        `;
+        document.body.appendChild(btn);
+
+        // Teaser bubble "Bạn cần giúp gì?"
+        const teaser = document.createElement('div');
+        teaser.className = 'chatbot-teaser';
+        teaser.textContent = 'Bạn cần giúp gì?';
+        document.body.appendChild(teaser);
+        // show then auto-hide after 6s
+        setTimeout(()=> teaser.classList.add('show'), 400);
+        setTimeout(()=> teaser.classList.remove('show'), 6400);
+
+        // Build widget
+        const widget = document.createElement('div');
+        widget.className = 'chatbot-widget';
+        widget.id = 'chatbotWidget';
+        widget.setAttribute('role', 'dialog');
+        widget.setAttribute('aria-modal', 'false');
+        widget.innerHTML = `
+            <div class="chatbot-header">
+                <div class="title">Hỗ trợ ByteNest</div>
+                <div class="controls">
+                    <button type="button" class="chatbot-close" title="Đóng">×</button>
+                </div>
+            </div>
+            <div class="chatbot-messages" id="chatbotMessages" aria-live="polite"></div>
+            <form class="chatbot-input" id="chatbotForm">
+                <input type="text" id="chatbotInput" placeholder="Nhập câu hỏi của bạn..." autocomplete="off" />
+                <button type="submit">Gửi</button>
+            </form>
+        `;
+        document.body.appendChild(widget);
+
+        const messages = widget.querySelector('#chatbotMessages');
+        const input = widget.querySelector('#chatbotInput');
+        const form = widget.querySelector('#chatbotForm');
+        const closeBtn = widget.querySelector('.chatbot-close');
+
+        function pushMsg(text, who='bot'){
+            const div = document.createElement('div');
+            div.className = `chatbot-msg ${who}`;
+            div.textContent = text;
+            messages.appendChild(div);
+            messages.scrollTop = messages.scrollHeight;
+        }
+
+        // Greeting
+        pushMsg('Xin chào! Mình có thể giúp gì cho bạn?');
+        pushMsg('Gợi ý: tình trạng đơn hàng, bảo hành, tư vấn sản phẩm...');
+
+        function openWidget(){ widget.classList.add('open'); btn.setAttribute('aria-expanded','true'); input.focus(); }
+        function closeWidget(){ widget.classList.remove('open'); btn.setAttribute('aria-expanded','false'); }
+        btn.addEventListener('click', () => {
+            if (widget.classList.contains('open')) closeWidget(); else openWidget();
+        });
+        closeBtn.addEventListener('click', closeWidget);
+        document.addEventListener('keydown', (e)=>{ if(e.key==='Escape') closeWidget(); });
+
+        form.addEventListener('submit', (e)=>{
+            e.preventDefault();
+            const val = (input.value || '').trim();
+            if (!val) return;
+            pushMsg(val, 'user');
+            input.value='';
+            // Very simple canned responses
+            setTimeout(()=>{
+                if (/đơn|order|mua|ship/i.test(val)) pushMsg('Bạn có thể xem giỏ hàng và tiến hành thanh toán tại mục Giỏ hàng. Đơn hàng demo chưa có trạng thái thực.');
+                else if (/bảo hành|warranty/i.test(val)) pushMsg('Sản phẩm chính hãng, bảo hành theo quy định từng hãng. Vui lòng cung cấp mã sản phẩm nếu cần hỗ trợ chi tiết.');
+                else if (/tư vấn|gợi ý|chọn/i.test(val)) pushMsg('Bạn đang quan tâm laptop, PC hay phụ kiện? Mình sẽ gợi ý mẫu phù hợp ngân sách.');
+                else pushMsg('Cảm ơn bạn! Một bạn hỗ trợ sẽ sớm phản hồi. Bạn cũng có thể để lại email/điện thoại.');
+            }, 450);
+        });
+    })();
 });
 
 // Keep CSS vars updated on window resize and orientation changes

@@ -23,7 +23,6 @@ body { font-family: 'Inter', 'Be Vietnam Pro', -apple-system, BlinkMacSystemFont
 
 body.dark-mode {
   /* Dark mode */
-  
   --primary-color: #6366F1;    
   --secondary-color: #8B5CF6;   
   --accent-color: #06B6D4;     
