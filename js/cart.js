@@ -1,28 +1,65 @@
 // ======================= CART MANAGEMENT =======================
 let cart = [];
 let cartCount = 0;
+let cartToastTimeout = null;
 
-function addToCart(event, productName, price) {
+function addToCart(eventOrName, maybeName, maybePrice) {
+    // Hỗ trợ cả cách gọi cũ: addToCart('Tên', price) và mới: addToCart(event, 'Tên', price)
+    let event = null;
+    let productName;
+    let price;
+
+    if (typeof eventOrName === 'string') {
+        productName = eventOrName;
+        price = maybeName;
+    } else {
+        event = eventOrName;
+        productName = maybeName;
+        price = maybePrice;
+    }
+
     cart.push({ name: productName, price: price });
     cartCount++;
-    document.getElementById('cartCount').textContent = cartCount;
 
-    // Animation feedback
-    const btn = event.target.closest('button'); // Lấy button chứa span
-    const btnText = btn.querySelector('span[data-i18n]'); // Lấy span chứa text
-    
-    if (btnText) {
-        const originalText = btnText.textContent;
-        const currentLang = I18N.currentLang || localStorage.getItem('lang') || 'vi';
-        
-        // Lấy text "✓ Đã thêm" hoặc "✓ Added" từ i18n
-        btnText.textContent = I18N.dict[currentLang]['notify.added'];
-        btn.style.background = '#28a745';
+    const cartCountEl = document.getElementById('cartCount');
+    if (cartCountEl) cartCountEl.textContent = cartCount;
 
-        setTimeout(() => {
-            btnText.textContent = originalText;
-            btn.style.background = '';
-        }, 1500);
+    // Hiệu ứng trên nút nếu có event
+    if (event) {
+        const btn = event.target.closest('button');
+        if (btn) {
+            btn.classList.add('btn-added');
+            setTimeout(() => btn.classList.remove('btn-added'), 500);
+        }
+    }
+
+    // Hiển thị toast hiện đại
+    showCartToast(productName, price);
+}
+
+function showCartToast(productName, price) {
+    const toast = document.getElementById('cartToast');
+    const textEl = document.getElementById('cartToastText');
+    if (!toast || !textEl) return;
+
+    const formattedPrice = typeof price === 'number' ? price.toLocaleString('vi-VN') + '₫' : '';
+    textEl.textContent = formattedPrice
+        ? `${productName} • ${formattedPrice}`
+        : productName;
+
+    toast.classList.add('show');
+
+    if (cartToastTimeout) clearTimeout(cartToastTimeout);
+    cartToastTimeout = setTimeout(() => {
+        toast.classList.remove('show');
+    }, 2600);
+
+    const closeBtn = toast.querySelector('.cart-toast__close');
+    if (closeBtn && !closeBtn._bound) {
+        closeBtn.addEventListener('click', () => {
+            toast.classList.remove('show');
+        });
+        closeBtn._bound = true;
     }
 }
 

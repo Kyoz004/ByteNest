@@ -419,22 +419,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const addToCartButtons = document.querySelectorAll('.btn-add-to-cart');
     addToCartButtons.forEach(button => {
         button.addEventListener('click', function(e) {
-            const ripple = document.createElement('span');
-            ripple.classList.add('ripple');
-            const rect = this.getBoundingClientRect();
-            ripple.style.left = e.clientX - rect.left + 'px';
-            ripple.style.top = e.clientY - rect.top + 'px';
-            this.appendChild(ripple);
-
-            const originalHTML = this.innerHTML;
-            this.innerHTML = '<i class="bi bi-check2-circle"></i><span>Đã thêm!</span>';
-            this.style.background = 'linear-gradient(135deg, #10b981 0%, #059669 100%)';
-
-            setTimeout(() => {
-                this.innerHTML = originalHTML;
-                this.style.background = '';
-                ripple.remove();
-            }, 1500);
+            const name = this.getAttribute('data-name');
+            const price = parseInt(this.getAttribute('data-price'), 10) || 0;
+            if (typeof addToCart === 'function') {
+                addToCart(e, name, price);
+            }
         });
     });
 

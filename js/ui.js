@@ -204,6 +204,12 @@ document.addEventListener('DOMContentLoaded', () => {
         const isAccount = /account/i.test(window.location.pathname);
         if (isAccount) return; // exclude account page
 
+        // Ẩn chatbot khi người dùng đang ở trong khu vực hero (đầu trang)
+        // và chỉ hiện ra khi cuộn xuống khỏi hero một đoạn nhỏ để tạo cảm giác tinh tế.
+        const heroSection = document.querySelector('.hero');
+        const headerEl = document.querySelector('header');
+        const heroHeight = heroSection ? heroSection.offsetHeight : 0;
+
         // Build floating FAB near scroll-to-top button
         const btn = document.createElement('button');
         btn.className = 'chatbot-fab';
@@ -288,6 +294,42 @@ document.addEventListener('DOMContentLoaded', () => {
                 else pushMsg('Cảm ơn bạn! Một bạn hỗ trợ sẽ sớm phản hồi. Bạn cũng có thể để lại email/điện thoại.');
             }, 450);
         });
+
+        // --- Ẩn/hiện tinh tế dựa trên vị trí cuộn ---
+        function updateChatbotVisibility(){
+            const scrollY = window.scrollY || window.pageYOffset;
+
+            // Lấy chiều cao thực tế của header (navigation) để canh timing cho tự nhiên
+            const headerHeight = headerEl ? headerEl.offsetHeight : 0;
+
+            // Ngưỡng = hết hero trừ đi một phần chiều cao header
+            // => chatbot bắt đầu xuất hiện cùng lúc khi phần nav vừa tách khỏi hero
+            const dynamicOffset = headerHeight ? headerHeight * 0.8 : 80;
+            const threshold = heroHeight ? Math.max(0, heroHeight - dynamicOffset) : 260;
+            const shouldShow = scrollY > threshold;
+
+            if (shouldShow) {
+                btn.style.opacity = '1';
+                btn.style.pointerEvents = 'auto';
+                teaser.style.opacity = '1';
+            } else {
+                // Ẩn hoàn toàn khi còn trong hero để không phá bố cục
+                btn.style.opacity = '0';
+                btn.style.pointerEvents = 'none';
+                teaser.style.opacity = '0';
+                // Nếu widget đang mở mà người dùng cuộn lại lên hero, đóng lại cho gọn
+                widget.classList.remove('open');
+                btn.setAttribute('aria-expanded','false');
+            }
+        }
+
+        // Khởi tạo trạng thái ban đầu
+        btn.style.transition = 'opacity .25s ease';
+        teaser.style.transition = 'opacity .25s ease';
+        updateChatbotVisibility();
+
+        // Lắng nghe sự kiện cuộn để cập nhật
+        window.addEventListener('scroll', updateChatbotVisibility, { passive: true });
     })();
 });
 
