@@ -130,21 +130,21 @@ body.dark-mode .chatbot-msg.bot { background: #0b1220; border-color: #1e293b; co
 
 @media (max-width: 480px) {
   .chatbot-fab { 
-    right: 20px; 
-    bottom: calc(env(safe-area-inset-bottom, 0px) + 18px); 
-    width: 50px; 
-    height: 50px; 
+    right: 87px; /* 25px (scroll btn right) + 48px (scroll btn width) + 14px (gap) */
+    bottom: calc(env(safe-area-inset-bottom, 0px) + 25px); 
+    width: 48px; 
+    height: 48px; 
   }
   .chatbot-teaser { 
     right: 12px; 
-    bottom: calc(env(safe-area-inset-bottom, 0px) + 80px); 
+    bottom: calc(env(safe-area-inset-bottom, 0px) + 85px); 
     max-width: calc(100vw - 24px);
   }
   .chatbot-widget { 
     right: 12px; 
     left: 12px; 
     width: auto; 
-    bottom: calc(env(safe-area-inset-bottom, 0px) + 78px); 
+    bottom: calc(env(safe-area-inset-bottom, 0px) + 85px); 
     max-height: 60vh; 
   }
 }
